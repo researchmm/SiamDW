@@ -90,9 +90,6 @@ class SiamFCDataset(Dataset):
         template, _, _ = self._augmentation(template_image, template_box, self.template_size)
         search, bbox, dag_param = self._augmentation(search_image, search_box, self.search_size)
 
-        self._draw(template_image, template_box, "debug/{:06d}_z.jpg".format(index))
-        self._draw(search_image, search_box, "debug/{:06d}_x.jpg".format(index))
-
         # from PIL image to numpy
         template = np.array(template)
         search = np.array(search)

@@ -8,7 +8,6 @@
 # ------------------------------------------------------------------------------
 
 import _init_paths
-import matlab.engine
 import os
 import cv2
 import random
@@ -23,9 +22,9 @@ from tracker.siamfc import SiamFC
 from easydict import EasyDict as edict
 from utils.utils import load_pretrain, cxy_wh_2_rect, get_axis_aligned_bbox, load_dataset, poly_iou
 
-# for GENE and TPE tuning
+# for GENE tuning
 from core.eval_otb import eval_auc_tune
-eng = matlab.engine.start_matlab()  # for test eao in vot-toolkit
+
 
 
 def parse_args():
@@ -141,9 +140,9 @@ def main():
         track(tracker, net, dataset[video], args)
 
 
-# -----------------------------------------------
-# The next few functions are utilized for tuning
-# -----------------------------------------------
+# --------------------------------------------------------------------------
+# The next few functions are utilized for tuning (only OTB is supported now)
+# --------------------------------------------------------------------------
 def track_tune(tracker, net, video, config):
     arch = config['arch']
     benchmark_name = config['benchmark']
@@ -239,21 +238,6 @@ def auc_otb(tracker, net, config):
     auc = eval_auc_tune(result_path, config['benchmark'])
 
     return auc
-
-
-def eao_vot(tracker, net, config):
-    dataset = load_dataset(config['benchmark'])
-    video_keys = sorted(list(dataset.keys()).copy())
-    results = []
-    for video in video_keys[:1]:
-        video_result = track_tune(tracker, net, dataset[video], config)
-        results.append(video_result)
-
-    year = config['benchmark'][-4:]  # need a str, instead of a int
-    eng.cd('./lib/core')
-    eao = eng.get_eao(results, year)
-
-    return eao
 
 
 if __name__ == '__main__':

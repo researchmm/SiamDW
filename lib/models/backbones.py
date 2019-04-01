@@ -62,33 +62,3 @@ class ResNet22W(nn.Module):
 
         return x
 
-
-class AlexBIG(nn.Module):
-    def __init__(self):
-        configs = [3, 96, 256, 384, 384, 256]
-        configs = list(map(lambda x: 3 if x==3 else x*2, configs))
-        super(AlexBIG, self).__init__()
-        self.features =nn.Sequential(
-            nn.Conv2d(configs[0], configs[1] , kernel_size=11, stride=2),
-            nn.BatchNorm2d(configs[1]),
-            nn.MaxPool2d(kernel_size=3, stride=2),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(configs[1], configs[2], kernel_size=5),
-            nn.BatchNorm2d(configs[2]),
-            nn.MaxPool2d(kernel_size=3, stride=2),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(configs[2], configs[3], kernel_size=3),
-            nn.BatchNorm2d(configs[3]),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(configs[3], configs[4], kernel_size=3),
-            nn.BatchNorm2d(configs[4]),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(configs[4], configs[5], kernel_size=3),
-            nn.BatchNorm2d(configs[5]),
-        )
-        self.feature_size = configs[-1]
-
-    def forward(self, x):
-        x = self.features(x)
-        return x
-

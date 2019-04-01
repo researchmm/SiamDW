@@ -20,11 +20,6 @@ from torch.autograd import Variable
 from easydict import EasyDict as edict
 from utils.utils import load_pretrain, cxy_wh_2_rect, get_axis_aligned_bbox, load_dataset, poly_iou
 
-# for GENE and TPE tuning
-import matlab.engine
-from core.eval_otb import eval_auc_tune
-eng = matlab.engine.start_matlab()  # for test eao in vot-toolkit
-
 
 def parse_args():
     """

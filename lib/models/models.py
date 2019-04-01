@@ -14,7 +14,7 @@
 from .siamfc import SiamFC_
 from .siamrpn import SiamRPN_
 from .connect import Corr_Up, RPN_Up
-from .backbones import ResNet22, Incep22, ResNeXt22, ResNet22W, AlexBIG
+from .backbones import ResNet22, Incep22, ResNeXt22, ResNet22W
 
 
 class SiamFCRes22(SiamFC_):

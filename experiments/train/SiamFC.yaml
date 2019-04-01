@@ -1,0 +1,42 @@
+SIAMFC:
+  GPUS: '0,1,2,3'
+  PRINT_FREQ: 10
+  WORKERS: 32
+  OUTPUT_DIR: 'logs'   # log file
+  CHECKPOINT_DIR: 'snapshot'   # checkpoint file
+
+  TRAIN:
+    MODEL: "SiamFCRes22"
+    START_EPOCH: 0
+    END_EPOCH: 50
+    TEMPLATE_SIZE: 127
+    SEARCH_SIZE: 255
+    STRIDE: 8
+    PAIRS: 600000
+    PRETRAIN: './pretrain/CIResNet22_PRETRAIN.model'
+    LR_POLICY: 'log'
+    LR: 0.001
+    LR_END: 0.0000001
+    MOMENTUM: 0.9
+    WEIGHT_DECAY: 0.0001
+    WHICH_USE: 'VID'  # VID or 'GOT10K'
+  TEST:    # TEST model is same as TRAIN.MODEL
+    DATA: 'VOT2017'
+    START_EPOCH: 30
+    END_EPOCH: 50
+  TUNE:    # TUNE model is same as TRAIN.MODEL
+    DATA: 'VOT2017'
+    METHOD: 'GENE'
+  DATASET:
+    SHIFT: 4
+    SCALE: 0.05
+    COLOR: 1
+    FLIP: 0
+    BLUR: 0
+    ROTATION: 0
+    VID:
+      PATH: '/data2/vid/crop511'
+      ANNOTATION: '/data2/vid/train.json'
+    GOT10K:
+      PATH: '/data2/got10k/crop511'
+      ANNOTATION: '/data2/got10k/train.json'

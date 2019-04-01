@@ -1,0 +1,13 @@
+TEST:
+  OTB2013:
+    scale_step: 1.0921
+    scale_lr: 0.4428
+    scale_penalty: 0.9617
+    w_influence: 0.2913
+    instance_size: 263
+  OTB2015:
+    scale_step: 1.1390
+    scale_lr: 0.1775
+    scale_penalty: 0.9593
+    w_influence: 0.2094
+    instance_size: 263

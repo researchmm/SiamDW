@@ -1,0 +1,16 @@
+TEST:
+  VOT2015:
+    scale_step: 1.1190
+    scale_lr: 0.4373
+    scale_penalty: 0.9811
+    w_influence: 0.2569
+  VOT2016:
+    scale_step: 1.1535 
+    scale_lr: 0.4596
+    scale_penalty: 0.9259
+    w_influence: 0.3309
+  VOT2017:
+    scale_step: 1.1466 
+    scale_lr: 0.2061
+    scale_penalty: 0.9994
+    w_influence: 0.3242

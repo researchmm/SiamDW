@@ -1,0 +1,13 @@
+TEST:
+  VOT2015:
+    penalty_k: 0.8950
+    lr: 0.6540
+    window_influence: 0.3700
+  VOT2016:
+    penalty_k: 0.7110
+    lr: 0.7010
+    window_influence: 0.3550
+  VOT2017:
+    penalty_k: 0.038
+    lr: 0.388
+    window_influence: 0.347

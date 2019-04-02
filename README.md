@@ -118,8 +118,8 @@ python ./lib/core/eval_otb.py OTB2013 ./result SiamRPN* 0 1
 #### Preparation
 - prepare conda environment and matlab-python API according to details above
 - modify dataset path in  `experiments/train/*.yaml` to your needs.
-- download pretrained model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EtXBYkgTVO9CghJ4HOLV3pQBTELpf4MSFFv1P952Rp9mXA?e=E0C2gw), [Google drive](https://drive.google.com/drive/folders/1RIMB9542xXp60bZwndTvmIt2jogxAIX3?usp=sharing) or [Baidu Drive](https://pan.baidu.com/s/10JzUr_z8e53ZSD8lhFxn1w), and put them to `pretrain` directory
-- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `h8vs` in the download box. 
+- download pretrained model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EtXBYkgTVO9CghJ4HOLV3pQBTELpf4MSFFv1P952Rp9mXA?e=E0C2gw), [Google drive](https://drive.google.com/drive/folders/1RIMB9542xXp60bZwndTvmIt2jogxAIX3?usp=sharing) or [Baidu Drive](https://pan.baidu.com/s/1_JxKUPlAZDti_53Bz1_Meg), and put them to `pretrain` directory
+- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `v5du` in the download box. 
 #### SiamFC
 
 ##### [Epoch Train]()

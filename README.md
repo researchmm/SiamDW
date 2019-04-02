@@ -88,14 +88,14 @@ ${Tracking_ROOT}
 We pre-process `VID` and `GOT10K` to training pairs. You can download it [here](https://drive.google.com/file/d/1oNpN-oQq_L2bwZhYicS_JVVmC3hC9NT0/view?usp=sharing).
 
 ### Test
-Download model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Et63uccGMABDo6u9Q-kD0ckBR9oXSGlEuLqDuoSwklBtxA?e=ef3Wrp), [Google drive](https://drive.google.com/drive/folders/19dBWxOqZnvM0FsgXGzH2Y7Bg7wgYMEoO?usp=sharing) or [Baidu drive](https://pan.baidu.com/s/18Alsd2R941gDLQAEw3srVw), and put them to `snapshot` directory
+Download model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Et63uccGMABDo6u9Q-kD0ckBR9oXSGlEuLqDuoSwklBtxA?e=ef3Wrp), [Google drive](https://drive.google.com/drive/folders/19dBWxOqZnvM0FsgXGzH2Y7Bg7wgYMEoO?usp=sharing) or [Baidu drive](https://pan.baidu.com/s/1_JxKUPlAZDti_53Bz1_Meg), and put them to `snapshot` directory
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python ./siamese_tracking/test_siamfc.py --arch SiamFCRes22 --resume ./snapshot/CIResNet22.pth --dataset OTB2013
 or 
 CUDA_VISIBLE_DEVICES=0 python ./siamese_tracking/test_siamrpn.py --arch SiamRPNRes22 --resume ./snapshot/CIResNet22_RPN.pth --dataset VOT2017
 ```
-- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `h8vs` in the download box. 
+- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `v5du` in the download box. 
 
 ### Analysz testing results
 #### **For OTB**
@@ -118,8 +118,8 @@ python ./lib/core/eval_otb.py OTB2013 ./result SiamRPN* 0 1
 #### Preparation
 - prepare conda environment and matlab-python API according to details above
 - modify dataset path in  `experiments/train/*.yaml` to your needs.
-- download pretrained model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EtXBYkgTVO9CghJ4HOLV3pQBTELpf4MSFFv1P952Rp9mXA?e=E0C2gw), [Google drive](https://drive.google.com/drive/folders/1RIMB9542xXp60bZwndTvmIt2jogxAIX3?usp=sharing) or [Baidu Drive](https://pan.baidu.com/s/1_JxKUPlAZDti_53Bz1_Meg), and put them to `pretrain` directory
-- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `v5du` in the download box. 
+- download pretrained model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EtXBYkgTVO9CghJ4HOLV3pQBTELpf4MSFFv1P952Rp9mXA?e=E0C2gw), [Google drive](https://drive.google.com/drive/folders/1RIMB9542xXp60bZwndTvmIt2jogxAIX3?usp=sharing) or [Baidu Drive](https://pan.baidu.com/s/11XXU-DjC8jrbNBdOXoi84Q), and put them to `pretrain` directory
+- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `f61j` in the download box. 
 #### SiamFC
 
 ##### [Epoch Train]()

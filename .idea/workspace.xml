@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46c30c04-43d5-48ec-b5c5-a2397a49eca9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/dataset/siamfc.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dataset/siamfc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/backbones.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/backbones.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/siamese_tracking/test_siamfc.py" beforeDir="false" afterPath="$PROJECT_DIR$/siamese_tracking/test_siamfc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/siamese_tracking/test_siamrpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/siamese_tracking/test_siamrpn.py" afterDir="false" />
-    </list>
+    <list default="true" id="46c30c04-43d5-48ec-b5c5-a2397a49eca9" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,12 +221,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554117113652</updated>
-      <workItem from="1554117115360" duration="670000" />
+      <workItem from="1554117115360" duration="781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="670000" />
+    <option name="totallyTimeSpent" value="781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />

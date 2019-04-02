@@ -38,8 +38,9 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 - CIResNet22W-FC is our recent work, which is not included in our paper.
 
 #### Note
-- You can download [raw results](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing) here without running the code.
-<!-- - The decimal digits of hyper-parameter `scale_lr` is a bit large, since I set the tuning phase to binary search. You can use decimal setting in our parameter tuning toolkit.  Details can be found in [Parameter Tuning Toolkit](). -->
+- You can download raw results from [Google Drive](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing), [Onedrive](https://mailccsf-my.sharepoint.com/:u:/g/personal/zhipeng_mail_ccsf_edu/EdjlJxAh_0JAkW5x6Ts5dgcBBQcGUx8KmGTyv7azlPgMzg?e=TNhpVR) and [Baidu Drive](https://pan.baidu.com/s/1rc_VXgqW3wpyrh2UETCrQQ) without running the code.
+- Extracted code for Baidu Drive is `nbiz`
+
 
 #### Environment
 The code is developed with Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz GPU: NVIDIA .GTX1080
@@ -84,7 +85,7 @@ ${Tracking_ROOT}
 [OTB2013.json](https://drive.google.com/file/d/1ZV6m2cN_TnM8XKR0q3ElYEz0P23iy2qn/view?usp=sharing) and [OTB2015.json](https://drive.google.com/file/d/1eIq7pCz_ik2toO1l9Npk1WXk4mZPK9_N/view?usp=sharing) can be download here.
 
 **For training SiamFC** <br/>
-We pre-process `VID` and `GOT10K` to training pairs. You can download it [here]().
+We pre-process `VID` and `GOT10K` to training pairs. You can download it [here](https://drive.google.com/file/d/1oNpN-oQq_L2bwZhYicS_JVVmC3hC9NT0/view?usp=sharing).
 
 ### Test
 Download model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Et63uccGMABDo6u9Q-kD0ckBR9oXSGlEuLqDuoSwklBtxA?e=ef3Wrp), [Google drive](https://drive.google.com/drive/folders/19dBWxOqZnvM0FsgXGzH2Y7Bg7wgYMEoO?usp=sharing) or [Baidu drive](https://pan.baidu.com/s/18Alsd2R941gDLQAEw3srVw), and put them to `snapshot` directory

@@ -86,8 +86,10 @@ ${Tracking_ROOT}
 [OTB2013.json](https://drive.google.com/file/d/1ZV6m2cN_TnM8XKR0q3ElYEz0P23iy2qn/view?usp=sharing) and [OTB2015.json](https://drive.google.com/file/d/1eIq7pCz_ik2toO1l9Npk1WXk4mZPK9_N/view?usp=sharing) can be download here.
 
 **For training SiamFC** <br/>
-We pre-process `VID` and `GOT10K` to training pairs. You can download it [here](https://drive.google.com/file/d/1oNpN-oQq_L2bwZhYicS_JVVmC3hC9NT0/view?usp=sharing).
-
+- We pre-process `VID` and `GOT10K` to training pairs. You can download it from [GoogleDrive](https://drive.google.com/file/d/1oNpN-oQq_L2bwZhYicS_JVVmC3hC9NT0/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/1WMU6E6cKJD4dhjxfcOHLNw 
+).
+- BaiduDrive extracted code `joxl`
+  
 ### Test
 Download model from [Onedrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Et63uccGMABDo6u9Q-kD0ckBR9oXSGlEuLqDuoSwklBtxA?e=ef3Wrp), [Google drive](https://drive.google.com/drive/folders/19dBWxOqZnvM0FsgXGzH2Y7Bg7wgYMEoO?usp=sharing) or [Baidu drive](https://pan.baidu.com/s/1_JxKUPlAZDti_53Bz1_Meg), and put them to `snapshot` directory
 

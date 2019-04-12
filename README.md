@@ -39,7 +39,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 - CIResNet22W-FC is our recent work, which is not included in our paper.
 
 #### Note
-- You can download raw results from [GoogleDrive](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing), [OneDrive](https://mailccsf-my.sharepoint.com/:u:/g/personal/zhipeng_mail_ccsf_edu/EdjlJxAh_0JAkW5x6Ts5dgcBcjBvYTa5elRQcIgf1KqgTw?e=6IQXek) and [BaiduDrive](https://pan.baidu.com/s/1J1x58GaKtbMISDVv0ZuoCg) without running the code.
+- You can download raw results from [GoogleDrive](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing), [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Ekjf2LfnGJ9NkYladR_Uk3IBnIQ3HlQybjzFRkwgeetGqg?e=DLlPJO) and [BaiduDrive](https://pan.baidu.com/s/1J1x58GaKtbMISDVv0ZuoCg) without running the code.
 - Extracted code for Baidu Drive is `htyx`
 
 
@@ -121,7 +121,7 @@ python ./lib/core/eval_otb.py OTB2013 ./result SiamRPN* 0 1
 #### Preparation
 - prepare conda environment and matlab-python API according to details above
 - modify dataset path in  `experiments/train/*.yaml` to your needs.
-- download pretrained model from [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EtXBYkgTVO9CghJ4HOLV3pQBniDQURbBlLqokmccXyHIuA?e=rdavV5), [GoogleDrive](https://drive.google.com/open?id=1RIMB9542xXp60bZwndTvmIt2jogxAIX3) or [BaiduDrive](https://pan.baidu.com/s/1TmIW8AsLEr9Mk3qSsT1pIg), and put them to `pretrain` directory
+- download pretrained model from [OneDrive](https://mailccsf-my.sharepoint.com/:u:/g/personal/zhipeng_mail_ccsf_edu/EXLC8YnM9B9Kq5KcqfjbFg4B-OIwp6ZflvW_p0s0K3R1_Q?e=XNqj3n), [GoogleDrive](https://drive.google.com/open?id=1RIMB9542xXp60bZwndTvmIt2jogxAIX3) or [BaiduDrive](https://pan.baidu.com/s/1TmIW8AsLEr9Mk3qSsT1pIg), and put them to `pretrain` directory
 - Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `7rfu` in the download box. 
 #### SiamFC
 

@@ -23,7 +23,7 @@ from easydict import EasyDict as edict
 from utils.utils import load_pretrain, cxy_wh_2_rect, get_axis_aligned_bbox, load_dataset, poly_iou
 
 # for GENE tuning
-from core.eval_otb import eval_auc_tune
+from core.eval_otb import eval_performance_tune
 
 
 
@@ -141,7 +141,8 @@ def main():
 
 
 # --------------------------------------------------------------------------
-# The next few functions are utilized for tuning (only OTB is supported now)
+# The next few functions are utilized for tuning hyper-parameters
+# You should choose a validation dataset (eg. validation videos in VID)
 # --------------------------------------------------------------------------
 def track_tune(tracker, net, video, config):
     arch = config['arch']
@@ -158,27 +159,14 @@ def track_tune(tracker, net, video, config):
     if not os.path.exists(tracker_path):
         os.makedirs(tracker_path)
 
-    if 'VOT' in benchmark_name:
-        baseline_path = join(tracker_path, 'baseline')
-        video_path = join(baseline_path, video['name'])
-        if not os.path.exists(video_path):
-            os.makedirs(video_path)
-        result_path = join(video_path, video['name'] + '_001.txt')
-    else:
-        result_path = join(tracker_path, '{:s}.txt'.format(video['name']))
+    result_path = join(tracker_path, '{:s}.txt'.format(video['name']))
 
     # occ for parallel running
     if not os.path.exists(result_path):
         fin = open(result_path, 'w')
         fin.close()
     else:
-        if benchmark_name.startswith('OTB'):
-            return tracker_path
-        elif benchmark_name.startswith('VOT'):
-            return 0
-        else:
-            print('benchmark not supported now')
-            return
+        return tracker_path
 
     start_frame, lost_times, toc = 0, 0, 0
 
@@ -198,35 +186,22 @@ def track_tune(tracker, net, video, config):
         elif f > start_frame:  # tracking
             state = tracker.track(state, im)  # track
             location = cxy_wh_2_rect(state['target_pos'], state['target_sz'])
-            b_overlap = poly_iou(gt[f], location) if 'VOT' in benchmark_name else 1
-            if b_overlap > 0:
-                regions.append(location)
-            else:
-                regions.append([float(2)])
-                lost_times += 1
-                start_frame = f + 5  # skip 5 frames
-        else:  # skip
-            regions.append([float(0)])
+            regions.append(location)
 
-    # save results for OTB
-    if 'OTB' in benchmark_name:
-        with open(result_path, "w") as fin:
-            for x in regions:
-                p_bbox = x.copy()
-                fin.write(
-                    ','.join([str(i + 1) if idx == 0 or idx == 1 else str(i) for idx, i in enumerate(p_bbox)]) + '\n')
+    with open(result_path, "w") as fin:
+        for x in regions:
+            p_bbox = x.copy()
+            fin.write(
+                ','.join([str(i + 1) if idx == 0 or idx == 1 else str(i) for idx, i in enumerate(p_bbox)]) + '\n')
 
-    if benchmark_name.startswith('OTB'):
-        return tracker_path
-    elif benchmark_name.startswith('VOT'):
-        return regions
-    else:
-        print('benchmark not supported now')
+    return tracker_path
 
 
-def auc_otb(tracker, net, config):
+
+def performance(tracker, net, config):
     """
-    get AUC for OTB benchmark
+    return performance evaluation value (eg. iou) to GENE
+    you should complete 'eval_performance_tune' according to your validation dataset
     """
     dataset = load_dataset(config['benchmark'])
     video_keys = list(dataset.keys()).copy()
@@ -235,7 +210,7 @@ def auc_otb(tracker, net, config):
     for video in video_keys:
         result_path = track_tune(tracker, net, dataset[video], config)
 
-    auc = eval_auc_tune(result_path, config['benchmark'])
+    auc = eval_performance_tune(result_path, config['benchmark'])
 
     return auc
 

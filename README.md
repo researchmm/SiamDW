@@ -142,10 +142,10 @@ python ./lib/core/eval_otb.py OTB2013 ./result SiamFC* 0 100 2>&1 | tee logs/sia
 
 ##### [Param-Tune]()
 <div id="TUNE-TOOLKIT"></div>
-Siamese trackers are severely sensitive to hyper-parameters in common sense. We provide a toolkit for selecting optimal hyper-parameters on a benchmark (for SiamFC). Wish our efforts will be helpful to your work. Only OTB is supported.
+Siamese trackers are severely sensitive to hyper-parameters in common sense. We provide a toolkit for selecting optimal hyper-parameters on a benchmark (for SiamFC). Wish our efforts will be helpful to your work. You should choose a validation dataset and modify evaluation scripts according to practical needs.
 
 ```
-mpiexec -n 16  python ./siamese_tracking/tune_gene.py --arch SiamFCRes22 --resume ./snapshot/CIResNet22.pth --dataset OTB2013 --gpu_nums 4 2>&1 | tee logs/gene_tune_fc.log
+mpiexec -n 16  python ./siamese_tracking/tune_gene.py --arch SiamFCRes22 --resume ./snapshot/CIResNet22.pth --dataset xxxx --gpu_nums 4 2>&1 | tee logs/gene_tune_fc.log
 ```
 
 

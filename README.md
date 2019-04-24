@@ -3,6 +3,7 @@ we are hiring talented interns: houwen.peng@microsoft.com
 ## News
 - :sunny::sunny: Our [paper](https://arxiv.org/abs/1901.01660) have been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
+- :sunny::sunny: The training code of deeper and wider RPN+ may be released at CVPR, be patient.
 
 
 ## Introduction

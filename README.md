@@ -1,9 +1,9 @@
 # Deeper and Wider Siamese Networks for Real-Time Visual Tracking
 we are hiring talented interns: houwen.peng@microsoft.com
 ## News
+- :sunny::sunny: The training and test code of SiamFC+ have been released, the test code of RPN+ also released. The training procedure of RPN+ will be released after VOT-2019 (June, 2019), be patient. We use RPN+ for VOT challenge, currently.
 - :sunny::sunny: Our [paper](https://arxiv.org/abs/1901.01660) have been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
-- :sunny::sunny: The training code of deeper and wider RPN+ may be released at CVPR, be patient.
 
 
 ## Introduction

@@ -38,7 +38,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 - Some reproduced results listed above are slightly better than the ones in the paper.
 - Recently we found that training on GOT10K dataset can achieve better performance for SiamFC. So we provide the results being trained on GOT10K.
 - CIResNet22W-FC is our recent work, which is not included in our paper.
-- Download pretrained on GOT10K [model](https://drive.google.com/file/d/1Oeks5ZIHsC8lXflHOErTA_jg81ESBJsv/view?usp=sharing) and GOT10K training pairs generation [codes](https://drive.google.com/file/d/1xytp3_vcaFC9Hvlqvei1PL8P5MhI7f0Y/view?usp=sharing) here. This version is naive, I'll embed it to codes layter.
+- Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing) and GOT10K training pairs generation [codes](https://drive.google.com/file/d/1xytp3_vcaFC9Hvlqvei1PL8P5MhI7f0Y/view?usp=sharing) here. This version is naive, I'll embed it to codes layter.
 
 #### Note
 - You can download raw results from [GoogleDrive](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing), [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Ekjf2LfnGJ9NkYladR_Uk3IBnIQ3HlQybjzFRkwgeetGqg?e=DLlPJO) and [BaiduDrive](https://pan.baidu.com/s/1J1x58GaKtbMISDVv0ZuoCg) without running the code.

@@ -12,7 +12,6 @@ import os
 import time
 import numpy as np
 import argparse
-import matlab.engine
 import models.models as models
 from easydict import EasyDict as edict
 from utils.utils import load_pretrain

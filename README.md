@@ -13,6 +13,11 @@ Our proposals improve the performances of fully convolutional siamese trackers b
 1) introducing CIR and CIR-D units to unveil the power of deeper and wider networks like [ResNet](https://arxiv.org/abs/1512.03385) and [Inceptipon](https://arxiv.org/abs/1409.4842); 
 2) designing backbone networks according to the analysis on internal network factors (e.g. receptive field, stride, output feature size), which affect tracking performances.
 
+<div align="center">
+  <img src="demo/vis.gif" width="800px" />
+  <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
+</div>
+
 <!-- :tada::tada: **Highlight !!**
 Siamese tracker is severely sensitive to hyper-parameter, which is a common sense in tracking field. Although significant progresses have been made in some works, the result is hard to reproduce. In this case, we provide a [parameter tuning toolkit]() to make our model being reproduced easily. We hope our efforts and supplies will be helpful to your work. -->
 

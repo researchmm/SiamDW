@@ -95,8 +95,17 @@ ${Tracking_ROOT}
 **For training SiamFC** <br/>
 - We pre-process `VID` and `GOT10K` to training pairs. You can download it from [GoogleDrive](https://drive.google.com/file/d/1oNpN-oQq_L2bwZhYicS_JVVmC3hC9NT0/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/17_qGxspaXC96SzyPwP5rmQ).
 - BaiduDrive extracted code `bnd9`
-  
-### Test
+
+### Test on a specific video
+eg,
+```
+python siamese_tracking/run_video.py --arch SiamRPNRes22 --resume snapshot/CIResNet22RPN.model --video videos/bag.mp4
+```
+- The opencv version here is 4.1.0.25, and older versions may be not friendly to some functions.
+- If you try to conduct this project on a specific tracking task, eg. pedestrian tracking, it's suggested that you can tuning hyper-parameters on your collected data with our tuning toolkit detailed below. 
+
+
+### Test on benchmarks
 Download model from [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EkWlTFNurBZOh9s37U4BMWoBcQmxvyWPjqjJpuZ0O-cNTg?e=RtBJOX), [GoogleDrive](https://drive.google.com/drive/folders/19dBWxOqZnvM0FsgXGzH2Y7Bg7wgYMEoO?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/14_4XVoes3IZCe8xt1-GNQg), and put them to `snapshot` directory
 - BaiduDrive extracted code `uqvi`
 

@@ -104,6 +104,14 @@ python siamese_tracking/run_video.py --arch SiamRPNRes22 --resume snapshot/CIRes
 - The opencv version here is 4.1.0.25, and older versions may be not friendly to some functions.
 - If you try to conduct this project on a specific tracking task, eg. pedestrian tracking, it's suggested that you can tuning hyper-parameters on your collected data with our tuning toolkit detailed below. 
 
+### Test through wencam
+eg,
+```
+python siamese_tracking/run_wecam.py --arch SiamRPNRes22 --resume snapshot/CIResNet22RPN.model
+```
+- The opencv version here is 4.1.0.25, and older versions may be not friendly to some functions.
+- You can embed any tracker for fun. This is also a good way to design experiments to determine how environmental factors affect your tracker.  
+
 
 ### Test on benchmarks
 Download model from [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EkWlTFNurBZOh9s37U4BMWoBcQmxvyWPjqjJpuZ0O-cNTg?e=RtBJOX), [GoogleDrive](https://drive.google.com/drive/folders/19dBWxOqZnvM0FsgXGzH2Y7Bg7wgYMEoO?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/14_4XVoes3IZCe8xt1-GNQg), and put them to `snapshot` directory

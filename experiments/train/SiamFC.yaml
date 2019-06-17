@@ -20,7 +20,7 @@ SIAMFC:
     LR_END: 0.00001
     MOMENTUM: 0.9
     WEIGHT_DECAY: 0.0001
-    WHICH_USE: 'VID'  # VID or 'GOT10K'
+    WHICH_USE: 'GOT10K'  # VID or 'GOT10K'
   TEST:    # TEST model is same as TRAIN.MODEL
     ISTRUE: True  # whether to test
     THREADS: 16   # multi threads test

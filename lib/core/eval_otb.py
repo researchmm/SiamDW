@@ -148,11 +148,10 @@ def eval_auc(dataset='OTB2015', result_path='./test/', tracker_reg='S*', start=0
 # This example provides auc on a dataset, you can modify it to your needs according to your validation dataset (eg, iou)
 # If you want to use auc(this demo) to eval performance, please generate a json file for your validation dataset as OTB format
 # ------------------------------------------------------------------------------------------------------------------
-
-def eval_performance_tune(result_path, dataset=None):
+def eval_auc_tune(result_path, dataset='OTB2015'):
     list_path = os.path.join(realpath(dirname(__file__)), '../../', 'dataset', dataset + '.json')
     annos = json.load(open(list_path, 'r'))
-    seqs = list(annos.keys())
+    seqs = list(annos.keys())  # dict to list for py3
     n_seq = len(seqs)
     thresholds_overlap = np.arange(0, 1.05, 0.05)
     success_overlap = np.zeros((n_seq, 1, len(thresholds_overlap)))
@@ -160,11 +159,15 @@ def eval_performance_tune(result_path, dataset=None):
     for i in range(n_seq):
         seq = seqs[i]
         gt_rect = np.array(annos[seq]['gt_rect']).astype(np.float)
+        gt_center = convert_bb_to_center(gt_rect)
         bb = get_result_bb(result_path, seq)
+        center = convert_bb_to_center(bb)
         success_overlap[i][0] = compute_success_overlap(gt_rect, bb)
-        
+
     auc = success_overlap[:, 0, :].mean()
     return auc
+
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 5:

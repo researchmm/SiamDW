@@ -16,7 +16,7 @@ import models.models as models
 from easydict import EasyDict as edict
 from utils.utils import load_pretrain
 from tracker.siamfc import SiamFC
-from test_siamfc import performance
+from test_siamfc import auc_otb, eao_vot
 
 from mpi4py import MPI
 from gaft import GAEngine
@@ -94,9 +94,23 @@ def fitness(indv):
     config['hp']['scale_lr'] = scale_lr
     config['hp']['w_influence'] = window_influence
 
-    auc = performance(tracker, net, config)
-    print("scale_step: {0}, scale_lr: {1}, scale_penalty: {2}, window_influence: {3}, auc: {4}".format(scale_step, scale_lr, scale_penalty, window_influence, auc.item()))
-    return auc.item()
+    if args.dataset.startswith('OTB'):
+        auc = auc_otb(tracker, net, config)
+        print("scale_step: {0}, scale_lr: {1}, scale_penalty: {2}, window_influence: {3}, auc: {4}".format(scale_step,
+                                                                                                           scale_lr,
+                                                                                                           scale_penalty,
+                                                                                                           window_influence,
+                                                                                                           auc.item()))
+        return auc.item()
+
+    elif args.dataset.startswith('VOT'):
+        eao = eao_vot(tracker, net, config)
+        print("scale_step: {0}, scale_lr: {1}, scale_penalty: {2}, window_influence: {3}, eao: {4}".format(scale_step,
+                                                                                                           scale_lr,
+                                                                                                           scale_penalty,
+                                                                                                           window_influence,
+                                                                                                           eao))
+        return eao
 
 
 if __name__ == "__main__":

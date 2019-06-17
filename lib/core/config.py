@@ -73,6 +73,72 @@ config.SIAMFC.TUNE.MODEL = config.SIAMFC.TRAIN.MODEL
 config.SIAMFC.TUNE.DATA = 'VOT2015'
 config.SIAMFC.TUNE.METHOD = 'GENE'  # 'GENE' or 'RAY'
 
+# #-----————- config for siamrpn ------------
+config.SIAMRPN = edict()
+config.SIAMRPN.DATASET = edict()
+config.SIAMRPN.DATASET.VID = edict()
+config.SIAMRPN.DATASET.YTB = edict()
+# config.SIAMRPN.DATASET.COCO = edict()
+# config.SIAMRPN.DATASET.DET = edict()
+config.SIAMRPN.TRAIN = edict()
+config.SIAMRPN.TEST = edict()
+config.SIAMRPN.TUNE = edict()
+
+# augmentation
+config.SIAMRPN.DATASET.SHIFT = 4
+config.SIAMRPN.DATASET.SCALE = 0.05
+config.SIAMRPN.DATASET.COLOR = 1
+config.SIAMRPN.DATASET.FLIP = 0
+config.SIAMRPN.DATASET.BLUR = 0
+config.SIAMRPN.DATASET.ROTATION = 0
+
+
+# vid
+config.SIAMRPN.DATASET.VID.PATH = '/data2/vid/crop511'
+config.SIAMRPN.DATASET.VID.ANNOTATION = '/data2/vid/train.json'
+
+# Y2B
+config.SIAMRPN.DATASET.YTB.PATH = '/data2/yt_bb/crop511'
+config.SIAMRPN.DATASET.YTB.ANNOTATION = '/data2/yt_bb/train.json'
+
+
+# train
+config.SIAMRPN.TRAIN.MODEL = "SiamRPNRes22"
+config.SIAMRPN.TRAIN.RESUME = False
+config.SIAMRPN.TRAIN.START_EPOCH = 0
+config.SIAMRPN.TRAIN.END_EPOCH = 50
+config.SIAMRPN.TRAIN.TEMPLATE_SIZE = 127
+config.SIAMRPN.TRAIN.SEARCH_SIZE = 255
+config.SIAMRPN.TRAIN.STRIDE = 8
+config.SIAMRPN.TRAIN.BATCH = 32
+config.SIAMRPN.TRAIN.PRETRAIN = 'resnet.model'
+config.SIAMRPN.TRAIN.LR_POLICY = 'log'
+config.SIAMRPN.TRAIN.LR = 0.01
+config.SIAMRPN.TRAIN.LR_END = 0.00001
+config.SIAMRPN.TRAIN.MOMENTUM = 0.9
+config.SIAMRPN.TRAIN.WEIGHT_DECAY = 0.0005
+config.SIAMRPN.TRAIN.CLS_WEIGHT = 1
+config.SIAMRPN.TRAIN.REG_WEIGHT = 1
+config.SIAMRPN.TRAIN.WHICH_USE = ['VID', 'YTB']  # VID or 'GOT10K' 
+config.SIAMRPN.TRAIN.ANCHORS_RATIOS = [0.33, 0.5, 1, 2, 3]  
+config.SIAMRPN.TRAIN.ANCHORS_SCALES = [8]  
+config.SIAMRPN.TRAIN.ANCHORS_THR_HIGH = 0.6
+config.SIAMRPN.TRAIN.ANCHORS_THR_LOW = 0.3
+config.SIAMRPN.TRAIN.ANCHORS_POS_KEEP = 16    # postive anchors to calc loss
+config.SIAMRPN.TRAIN.ANCHORS_ALL_KEEP = 64    # postive + neg anchors to calc loss
+
+
+# test
+config.SIAMRPN.TEST.MODEL = config.SIAMRPN.TRAIN.MODEL
+config.SIAMRPN.TEST.DATA = 'VOT2017'
+config.SIAMRPN.TEST.START_EPOCH = 30
+config.SIAMRPN.TEST.END_EPOCH = 50
+
+# tune
+config.SIAMRPN.TUNE.MODEL = config.SIAMRPN.TRAIN.MODEL
+config.SIAMRPN.TUNE.DATA = 'VOT2017'
+config.SIAMRPN.TUNE.METHOD = 'TPE' 
+
 
 
 def _update_dict(k, v, model_name):

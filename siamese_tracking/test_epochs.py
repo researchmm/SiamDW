@@ -51,3 +51,5 @@ for i in range(2):
 
     if 'SiamFC' in arch:
         os.system('python ./siamese_tracking/test_siamfc.py --arch {0} --resume {1} --dataset {2} --epoch_test True'.format(arch, resume, dataset))
+    if 'SiamRPN' in arch:
+        os.system('python ./siamese_tracking/test_siamrpn.py --arch {0} --resume {1} --dataset {2}  --epoch_test True'.format(arch, resume, dataset))

@@ -536,3 +536,36 @@ def save_model(model, epoch, optimizer, model_name, cfg, isbest=False):
         }, isbest, cfg.CHECKPOINT_DIR, 'checkpoint_e%d.pth' % (epoch + 1))
     else:
         print('epoch not save(<5)')
+
+def extract_eaos(lines):
+    """
+    extract info of VOT eao
+    """
+    epochs = []
+    eaos = []
+    for line in lines:
+        if not line.startswith('[*]'):
+            continue
+        _, temp1, _, temp3 = line.split(': ')
+        epochs.append(int(temp1.split('_e')[-1]))
+        eaos.append(float(temp3))
+
+    # fine bese epoch
+    idx = eaos.index(max(eaos))
+    epoch = epochs[idx]
+
+    return epoch
+
+
+def extract_logs(logfile, prefix):
+    """
+    extract logs for tuning, return best epoch number
+    prefix: VOT, OTB, VOTLT, VOTRGBD, VOTRGBT
+    """
+    lines = open(logfile, 'r').readlines()
+    if prefix == 'VOT':
+        epoch = extract_eaos(lines)
+    else:
+        raise ValueError('not supported now')
+
+    return 'checkpoint_e{}.pth'.format(epoch)

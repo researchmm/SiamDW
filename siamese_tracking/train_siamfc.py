@@ -100,6 +100,14 @@ def lr_decay(cfg, optimizer):
     return scheduler
 
 
+def pretrain_zoo():
+    GDriveIDs = dict()
+    GDriveIDs['SiamFCRes22'] = "1kgYJdydU7Wm6oj9-tGA5EFc6Io2V7rPT"
+    GDriveIDs['SiamFCIncep22'] = "1FxbQOSsG51Wau6-MUzsteoald3Y14xJ4"
+    GDriveIDs['SiamFCNext22'] = "1sURid92u4hEHR4Ev0wrQPAw8GZtLmB5n"
+    return GDriveIDs
+
+
 def main():
     # [*] args, loggers and tensorboard
     args = parse_args()
@@ -113,6 +121,20 @@ def main():
         'writer': SummaryWriter(log_dir=tb_log_dir),
         'train_global_steps': 0,
     }
+
+    # auto-download train model from GoogleDrive
+    if not os.path.exists('./pretrain'):
+        os.makedirs('./pretrain')
+    try:
+        DRIVEID = pretrain_zoo()
+
+        if not os.path.exists('./pretrain/{}'.format(config.SIAMFC.TRAIN.PRETRAIN)):
+            os.system(
+                'wget --no-check-certificate \'https://drive.google.com/uc?export=download&id={0}\' -O ./pretrain/{1}'
+                .format(DRIVEID[config.SIAMFC.TRAIN.MODEL], config.SIAMFC.TRAIN.PRETRAIN))
+    except:
+        print('auto-download pretrained model fail, please download it and put it in pretrain directory')
+
 
     # [*] gpus parallel and model prepare
     # prepare

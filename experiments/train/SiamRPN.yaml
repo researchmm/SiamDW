@@ -1,0 +1,85 @@
+SIAMRPN:
+  GPUS: '0,1,2,3'
+  PRINT_FREQ: 10
+  WORKERS: 32
+  OUTPUT_DIR: 'logs'   # log file
+  CHECKPOINT_DIR: 'snapshot'   # checkpoint file
+
+  TRAIN:
+    ISTRUE: True   # whether to train
+    MODEL: "SiamRPNRes22"
+    START_EPOCH: 0
+    END_EPOCH: 50
+    TEMPLATE_SIZE: 127
+    SEARCH_SIZE: 255
+    STRIDE: 8
+    BATCH: 32
+    RESUME: False
+    PRETRAIN: 'pretrain.model'
+    LR_POLICY: 'log'
+    LR: 0.01
+    LR_END: 0.00001
+    MOMENTUM: 0.9
+    WEIGHT_DECAY: 0.0005
+    CLS_WEIGHT: 1
+    REG_WEIGHT: 1
+    CLS_TYPE: 'thicker'  # thicker or thinner
+    WHICH_USE: ['YTB', 'VID', 'COCO', 'DET']    # add any data you want eg: ['GOT10K', 'LASOT']
+    ANCHORS_RATIOS: [0.33, 0.5, 1, 2, 3]
+    ANCHORS_SCALES: [8]
+    ANCHORS_THR_HIGH: 0.6
+    ANCHORS_THR_LOW: 0.3
+    ANCHORS_POS_KEEP: 16
+    ANCHORS_ALL_KEEP: 64
+  TEST:    # TEST model is same as TRAIN.MODEL
+    ISTRUE: True  # whether to test
+    THREADS: 16   # multi threads test
+    DATA: 'VOT2016'
+    START_EPOCH: 20
+    END_EPOCH: 50
+  TUNE:    # TUNE model is same as TRAIN.MODEL
+    ISTRUE: False  # whether to tune
+    DATA: 'VOT2016'
+    METHOD: 'TPE'
+  DATASET:
+    SHIFT: 4
+    SCALE: 0.05
+    COLOR: 1
+    FLIP: 0
+    BLUR: 0.2
+    ROTATION: 0
+    # add data path in WITCH_USE
+    # you can ablate here to find witch data and ratio is better for your task
+    VID:
+      PATH: '/data/home/zzp/data/vid/crop271'
+      ANNOTATION: '/data/home/zzp/data/vid/train.json'
+      RANGE: 100
+      USE: 200000
+    YTB:
+      PATH: '/data/home/hopeng/data/ytb/crop271'
+      ANNOTATION: '/data/home/hopeng/data/ytb/train.json'
+      RANGE: 3
+      USE: 200000
+    DET:
+      PATH: '/data/home/hopeng/data/det/crop271'
+      ANNOTATION: '/data/home/hopeng/data/det/train.json'
+      RANGE: 100
+      USE: 100000
+    COCO:
+      PATH: "/data/home/hopeng/data/coco/crop271"
+      ANNOTATION: "/data/home/hopeng/data/coco/train2017.json"
+      RANGE: 1
+      USE: 100000
+    GOT10K:
+      PATH: '/data/home/hopeng/data/got10k/crop271'
+      ANNOTATION: '/data/home/hopeng/data/got10k/train.json'
+      RANGE: 100
+      USE: 200000
+    LASOT:
+      PATH: "/data/home/hopeng/data/lasot/crop271"
+      ANNOTATION: "/data/home/hopeng/data/lasot/train2017.json"
+      RANGE: 100
+      USE: 200000
+
+
+

@@ -13,6 +13,7 @@ import cv2
 import random
 import argparse
 import numpy as np
+import matlab.engine
 from os.path import exists, join
 import models.models as models
 from tracker.siamrpn import SiamRPN
@@ -20,6 +21,7 @@ from torch.autograd import Variable
 from easydict import EasyDict as edict
 from utils.utils import load_pretrain, cxy_wh_2_rect, get_axis_aligned_bbox, load_dataset, poly_iou
 
+eng = matlab.engine.start_matlab()
 
 def parse_args():
     """
@@ -30,6 +32,7 @@ def parse_args():
     parser.add_argument('--resume', required=True, type=str, help='pretrained model')
     parser.add_argument('--dataset', default='VOT2017', help='dataset test')
     parser.add_argument('--anchor_nums', default=5, type=int, help='anchor numbers')
+    parser.add_argument('--cls_type', default="thicker", type=str, help='cls/loss type, thicker or thinner or else you defined')
     parser.add_argument('--epoch_test', default=False, type=bool, help='multi-gpu epoch test flag')
     args = parser.parse_args()
 
@@ -115,7 +118,7 @@ def main():
     total_lost = 0
 
     # prepare model
-    net = models.__dict__[args.arch](anchors_nums=args.anchor_nums)
+    net = models.__dict__[args.arch](anchors_nums=args.anchor_nums, cls_type=args.cls_type)
     net = load_pretrain(net, args.resume)
     net.eval()
     net = net.cuda()
@@ -127,6 +130,7 @@ def main():
     # prepare tracker
     info = edict()
     info.arch = args.arch
+    info.cls_type = args.cls_type
     info.dataset = args.dataset
     info.epoch_test = args.epoch_test
     tracker = SiamRPN(info)
@@ -134,6 +138,98 @@ def main():
     for video in video_keys:
         total_lost += track(tracker, net, dataset[video], args)
     print('Total Lost: {:d}'.format(total_lost))
+
+
+# ------------------------------------------------------------
+# The next few functions are utilized for tuning
+# Only VOT is supported
+# About 1000 - 3000 group is needed
+# ------------------------------------------------------------
+def track_tune(tracker, net, video, config):
+    arch = config['arch']
+    benchmark_name = config['benchmark']
+    resume = config['resume']
+    hp = config['hp']  # penalty_k, scale_lr, window_influence, adaptive size (for vot2017 or later)
+
+    tracker_path = join('test', (benchmark_name + resume.split('/')[-1].split('.')[0] +
+                                 '_small_size_{:.4f}'.format(hp['small_sz']) +
+                                 '_big_size_{:.4f}'.format(hp['big_sz']) +
+                                 '_penalty_k_{:.4f}'.format(hp['penalty_k']) +
+                                 '_w_influence_{:.4f}'.format(hp['window_influence']) +
+                                 '_scale_lr_{:.4f}'.format(hp['lr'])).replace('.', '_'))  # no .
+
+    if not os.path.exists(tracker_path):
+        os.makedirs(tracker_path)
+
+    if 'VOT' in benchmark_name:
+        baseline_path = join(tracker_path, 'baseline')
+        video_path = join(baseline_path, video['name'])
+        if not os.path.exists(video_path):
+            os.makedirs(video_path)
+        result_path = join(video_path, video['name'] + '_001.txt')
+    else:
+        raise ValueError('Only VOT is supported')
+
+    # occ for parallel running
+    if not os.path.exists(result_path):
+        fin = open(result_path, 'w')
+        fin.close()
+    else:
+        if benchmark_name.startswith('VOT'):
+            return 0
+        else:
+            raise ValueError('Only VOT is supported')
+
+
+    start_frame, lost_times, toc = 0, 0, 0
+    regions = []  # result and states[1 init / 2 lost / 0 skip]
+    image_files, gt = video['image_files'], video['gt']
+    for f, image_file in enumerate(image_files):
+        im = cv2.imread(image_file)
+        if len(im.shape) == 2:
+            im = cv2.cvtColor(im, cv2.COLOR_GRAY2BGR)
+        if f == start_frame:  # init
+            cx, cy, w, h = get_axis_aligned_bbox(gt[f])
+            target_pos = np.array([cx, cy])
+            target_sz = np.array([w, h])
+            state = tracker.init(im, target_pos, target_sz, net, hp=hp)  # init tracker
+            regions.append([float(1)] if 'VOT' in benchmark_name else gt[f])
+        elif f > start_frame:  # tracking
+            state = tracker.track(state, im)  # track
+            location = cxy_wh_2_rect(state['target_pos'], state['target_sz'])
+            b_overlap = poly_iou(gt[f], location) if 'VOT' in benchmark_name else 1
+            if b_overlap > 0:
+                regions.append(location)
+            else:
+                regions.append([float(2)])
+                lost_times += 1
+                start_frame = f + 5  # skip 5 frames
+        else:  # skip
+            regions.append([float(0)])
+
+    # save results for OTB
+    if benchmark_name.startswith('VOT'):
+        return regions
+    else:
+        raise ValueError('Only VOT is supported')
+
+
+
+def eao_vot_rpn(tracker, net, config):
+    dataset = load_dataset(config['benchmark'])
+    video_keys = sorted(list(dataset.keys()).copy())
+    results = []
+    for video in video_keys:
+        video_result = track_tune(tracker, net, dataset[video], config)
+        results.append(video_result)
+
+    year = config['benchmark'][-4:]  # need a str, instead of a int
+    eng.cd('./lib/core')
+    eao = eng.get_eao(results, year)
+
+    return eao
+
+
 
 
 if __name__ == '__main__':

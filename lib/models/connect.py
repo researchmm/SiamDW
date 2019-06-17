@@ -2,9 +2,9 @@
 # Copyright (c) Microsoft
 # Licensed under the MIT License.
 # Written by Houwen Peng and Zhipeng Zhang
-# Email: houwen.peng@microsoft.com
+# Email: zhangzhipeng2017@ia.ac.cn
 # Details: This script provides cross-correlation head of SiamFC
-# Main Results: see readme.md
+# Reference: SiamFC[] and SiamRPN[Li]
 # ------------------------------------------------------------------------------
 
 import torch.nn as nn
@@ -37,14 +37,17 @@ class RPN_Up(nn.Module):
     """
     For SiamRPN
     """
-    def __init__(self, anchor_nums=5, inchannels=256, outchannels=256):
+    def __init__(self, anchor_nums=5, inchannels=256, outchannels=256, cls_type='thicker'):
         super(RPN_Up, self).__init__()
 
         self.anchor_nums = anchor_nums
         self.inchannels = inchannels
         self.outchannels = outchannels
 
-        self.cls_channel = self.anchor_nums
+        if cls_type == 'thinner': self.cls_channel = self.anchor_nums
+        elif cls_type == 'thicker': self.cls_channel = self.anchor_nums * 2
+        else: raise ValueError('not implemented cls/loss type')
+
         self.reg_channel = 4 * self.anchor_nums
 
         self.template_cls = nn.Conv2d(self.inchannels, self.outchannels * self.cls_channel, kernel_size=3)
@@ -54,6 +57,7 @@ class RPN_Up(nn.Module):
         self.search_reg = nn.Conv2d(self.inchannels, self.outchannels, kernel_size=3)
         self.adjust = nn.Conv2d(self.reg_channel, self.reg_channel, kernel_size=1)
 
+
     def _conv2d_group(self, x, kernel):
         batch = kernel.size()[0]
         pk = kernel.view(-1, x.size()[1], kernel.size()[2], kernel.size()[3])
@@ -61,6 +65,7 @@ class RPN_Up(nn.Module):
         po = F.conv2d(px, pk, groups=batch)
         po = po.view(batch, -1, po.size()[2], po.size()[3])
         return po
+
 
     def forward(self, z_f, x_f):
         cls_kernel = self.template_cls(z_f)

@@ -50,9 +50,14 @@ class SiamRPNRes22(SiamRPN_):
         super(SiamRPNRes22, self).__init__(**kwargs)
         self.features = ResNet22()
         inchannels = self.features.feature_size
-        outchannels = 256
+
+        if self.cls_type == 'thinner': outchannels = 256
+        elif self.cls_type == 'thicker': outchannels = 512
+        else: raise ValueError('not implemented loss/cls type')
+
         self.connect_model = RPN_Up(anchor_nums=self.anchor_nums,
                                     inchannels=inchannels,
-                                    outchannels=outchannels)
+                                    outchannels=outchannels,
+                                    cls_type = self.cls_type)
 
 

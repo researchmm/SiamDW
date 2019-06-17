@@ -69,7 +69,7 @@ def siamfc_train(train_loader, model,  optimizer, epoch, cur_lr, cfg, writer_dic
 
     return model, writer_dict
 
-def siamrpn_train(train_loader, model,  optimizer, epoch, cur_lr, cfg, writer_dict, logger):
+def siamrpn_train(train_loader, model,  optimizer, epoch, cur_lr, cfg, writer_dict, logger, cls_type='thicker'):
     model, optimizer = unfix_more(model, optimizer, epoch, cfg, cur_lr, logger)
     batch_time = AverageMeter()
     data_time = AverageMeter()
@@ -89,7 +89,11 @@ def siamrpn_train(train_loader, model,  optimizer, epoch, cur_lr, cfg, writer_di
         # input and output/loss
         template = Variable(input[0]).cuda()
         search = Variable(input[1]).cuda()
-        label_cls = Variable(input[2].type(torch.FloatTensor)).cuda()
+
+        if cls_type == 'thinner':
+            label_cls = Variable(input[2].type(torch.FloatTensor)).cuda()
+        else:
+            label_cls = Variable(input[2]).cuda()
         label_reg = Variable(input[3]).cuda()
         label_reg_weight = Variable(input[4]).cuda()
         sum_weight = Variable(input[5].type(torch.FloatTensor)).cuda()

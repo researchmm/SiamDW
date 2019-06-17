@@ -78,8 +78,10 @@ config.SIAMRPN = edict()
 config.SIAMRPN.DATASET = edict()
 config.SIAMRPN.DATASET.VID = edict()
 config.SIAMRPN.DATASET.YTB = edict()
-# config.SIAMRPN.DATASET.COCO = edict()
-# config.SIAMRPN.DATASET.DET = edict()
+config.SIAMRPN.DATASET.COCO = edict()
+config.SIAMRPN.DATASET.DET = edict()
+config.SIAMRPN.DATASET.GOT10K = edict()
+config.SIAMRPN.DATASET.LASOT = edict()
 config.SIAMRPN.TRAIN = edict()
 config.SIAMRPN.TEST = edict()
 config.SIAMRPN.TUNE = edict()
@@ -94,12 +96,28 @@ config.SIAMRPN.DATASET.ROTATION = 0
 
 
 # vid
-config.SIAMRPN.DATASET.VID.PATH = '/data2/vid/crop511'
+config.SIAMRPN.DATASET.VID.PATH = '/data2/vid/crop271'
 config.SIAMRPN.DATASET.VID.ANNOTATION = '/data2/vid/train.json'
 
 # Y2B
-config.SIAMRPN.DATASET.YTB.PATH = '/data2/yt_bb/crop511'
+config.SIAMRPN.DATASET.YTB.PATH = '/data2/yt_bb/crop271'
 config.SIAMRPN.DATASET.YTB.ANNOTATION = '/data2/yt_bb/train.json'
+
+# DET
+config.SIAMRPN.DATASET.YTB.PATH = '/data2/det/crop271'
+config.SIAMRPN.DATASET.YTB.ANNOTATION = '/data2/det/train.json'
+
+# COCO
+config.SIAMRPN.DATASET.YTB.PATH = '/data2/coco/crop271'
+config.SIAMRPN.DATASET.YTB.ANNOTATION = '/data2/coco/train.json'
+
+# GOT10K
+config.SIAMRPN.DATASET.YTB.PATH = '/data2/got10k/crop271'
+config.SIAMRPN.DATASET.YTB.ANNOTATION = '/data2/got10k/train.json'
+
+# LASOT
+config.SIAMRPN.DATASET.YTB.PATH = '/data2/lasot/crop271'
+config.SIAMRPN.DATASET.YTB.ANNOTATION = '/data2/lasot/train.json'
 
 
 # train

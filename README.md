@@ -1,7 +1,7 @@
 # Deeper and Wider Siamese Networks for Real-Time Visual Tracking
 we are hiring talented interns: houwen.peng@microsoft.com
 ## News
-- :sunny::sunny: The training and test code of SiamFC+ have been released, the test code of RPN+ also released. The training procedure of RPN+ will be released after VOT-2019 (June, 2019), be patient. We use RPN+ for VOT challenge, currently.
+- :sunny::sunny: The training and test code of SiamFC+ and SiamRPN+ have been released.
 - :sunny::sunny: Our [paper](https://arxiv.org/abs/1901.01660) have been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
 
@@ -43,7 +43,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 - Some reproduced results listed above are slightly better than the ones in the paper.
 - Recently we found that training on GOT10K dataset can achieve better performance for SiamFC. So we provide the results being trained on GOT10K.
 - CIResNet22W-FC is our recent work, which is not included in our paper.
-- Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing) and GOT10K training pairs generation [codes](https://drive.google.com/file/d/1xytp3_vcaFC9Hvlqvei1PL8P5MhI7f0Y/view?usp=sharing) here. This version is naive, I'll embed it to codes layter.
+- Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing). 
 
 #### Note
 - You can download raw results from [GoogleDrive](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing), [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Ekjf2LfnGJ9NkYladR_Uk3IBnIQ3HlQybjzFRkwgeetGqg?e=DLlPJO) and [BaiduDrive](https://pan.baidu.com/s/1J1x58GaKtbMISDVv0ZuoCg) without running the code.
@@ -53,133 +53,23 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 #### Environment
 The code is developed with Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz GPU: NVIDIA .GTX1080
 
-:cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
+
 
 ## Quick Start
-### Installation
-**For SiamFC**
-```
-conda create -n SiamDWFC python=3.6
-source activate SiamDWFC
-sh install_fc.sh
-```
-**For SiamRPN**
-```
-conda create -n SiamDWRPN python=3.6
-source activate SiamDWRPN
-sh install_rpn.sh
-```
+### Test
+See details in [test.md](lib/tutorials/test.md)
 
-- Recently we found that the image is slightly inconsistent while using different OpenCV version. And the speed of some opencv versions are relatively slow for some reason. It is recommended that you install packages above. 
-- The SiamRPN based model is trained on pytorch0.4.1, since we found that memory leak happens while testing SiamRPN on pytorch0.3.1 with multithread tools.
-
-### Data preparation
-**For testing** <br/>
-The test dataset (OTB or VOT) should be arranged in `dataset` directory. Your directory tree should look like this:
-```
-${Tracking_ROOT}
-|—— experimnets
-|—— lib
-|—— snapshot
-|—— dataset
-  |—— OTB2013.json
-  |—— OTB2015.json 
-  |—— OTB2013 (or VOT2015...)
-     |—— videos...
-|—— run_tracker.py
-|—— ...
-
-```
-[OTB2013.json](https://drive.google.com/file/d/1ZV6m2cN_TnM8XKR0q3ElYEz0P23iy2qn/view?usp=sharing) and [OTB2015.json](https://drive.google.com/file/d/1eIq7pCz_ik2toO1l9Npk1WXk4mZPK9_N/view?usp=sharing) can be download here.
-
-**For training SiamFC** <br/>
-- We pre-process `VID` and `GOT10K` to training pairs. You can download it from [GoogleDrive](https://drive.google.com/file/d/1oNpN-oQq_L2bwZhYicS_JVVmC3hC9NT0/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/17_qGxspaXC96SzyPwP5rmQ).
-- BaiduDrive extracted code `bnd9`
-
-### Test on a specific video
-eg,
-```
-python siamese_tracking/run_video.py --arch SiamRPNRes22 --resume snapshot/CIResNet22RPN.model --video videos/bag.mp4
-```
-- The opencv version here is 4.1.0.25, and older versions may be not friendly to some functions.
-- If you try to conduct this project on a specific tracking task, eg. pedestrian tracking, it's suggested that you can tuning hyper-parameters on your collected data with our tuning toolkit detailed below. 
-
-### Test through webcam
-eg,
-```
-python siamese_tracking/run_wecam.py --arch SiamRPNRes22 --resume snapshot/CIResNet22RPN.model
-```
-- The opencv version here is 4.1.0.25, and older versions may be not friendly to some functions.
-- You can embed any tracker for fun. This is also a good way to design experiments to determine how environmental factors affect your tracker.  
-
-
-### Test on benchmarks
-Download model from [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/EkWlTFNurBZOh9s37U4BMWoBcQmxvyWPjqjJpuZ0O-cNTg?e=RtBJOX), [GoogleDrive](https://drive.google.com/drive/folders/19dBWxOqZnvM0FsgXGzH2Y7Bg7wgYMEoO?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/14_4XVoes3IZCe8xt1-GNQg), and put them to `snapshot` directory
-- BaiduDrive extracted code `uqvi`
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python ./siamese_tracking/test_siamfc.py --arch SiamFCRes22 --resume ./snapshot/CIResNet22.pth --dataset OTB2013
-or 
-CUDA_VISIBLE_DEVICES=0 python ./siamese_tracking/test_siamrpn.py --arch SiamRPNRes22 --resume ./snapshot/CIResNet22_RPN.pth --dataset VOT2017
-```
-- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `v5du` in the download box. 
-
-### Analysz testing results
-#### **For OTB**
-```bash
-python ./lib/core/eval_otb.py OTB2013 ./result SiamFC* 0 1
-or
-python ./lib/core/eval_otb.py OTB2013 ./result SiamRPN* 0 1
-```
-
-<div id="VOT-TEST"></div>
-
-#### **For VOT**
-1) Please refer to VOT official [tutorial](http://www.votchallenge.net/howto/workspace.html) to set up your workspace. <br/>
-2) Move `txt` result files to `result` directory in vot-workspace. Please keep directory name coincident with `run_analysis.m`. <br/>
-3) run `run_analysis.m`
+### Train
+See details in [train.md](lib/tutorials/train.md)
 
 :cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
-### Reproduce -- Train/Test/Tune
 
-#### Preparation
-- prepare conda environment and matlab-python API according to details above
-- modify dataset path in  `experiments/train/*.yaml` to your needs.
-- download pretrained model from [OneDrive](https://mailccsf-my.sharepoint.com/:u:/g/personal/zhipeng_mail_ccsf_edu/EXLC8YnM9B9Kq5KcqfjbFg4B-OIwp6ZflvW_p0s0K3R1_Q?e=XNqj3n), [GoogleDrive](https://drive.google.com/open?id=1RIMB9542xXp60bZwndTvmIt2jogxAIX3) or [BaiduDrive](https://pan.baidu.com/s/1TmIW8AsLEr9Mk3qSsT1pIg), and put them to `pretrain` directory
-- Extracted code for Baidu drive is required due to softerware maintenance recently. Please input `7rfu` in the download box. 
-#### SiamFC
-
-##### [Epoch Train]()
-```
-python ./siamese_tracking/train_siamfc.py --cfg experiments/train/SiamFC.yaml --gpus 0,1,2,3 --workers 32 2>&1 | tee logs/siamfc_train.log
-```
-
-##### [Epoch Test]()
-If you want to test multi-epochs after training,
-```
-mpiexec -n 16 python ./siamese_tracking/test_epochs.py --arch SiamFCRes22 --start_epoch 30 --end_epoch 50 --gpu_nums=4 --threads 16 --dataset OTB2013 2>&1 | tee logs/siamfc_epoch_test.log
-```
-```
-python ./lib/core/eval_otb.py OTB2013 ./result SiamFC* 0 100 2>&1 | tee logs/siamfc_eval_epoch.log
-```
-
-
-##### [Param-Tune]()
-<div id="TUNE-TOOLKIT"></div>
-Siamese trackers are severely sensitive to hyper-parameters in common sense. We provide a toolkit for selecting optimal hyper-parameters on a benchmark (for SiamFC). Wish our efforts will be helpful to your work. You should choose a validation dataset and modify evaluation scripts according to practical needs.
-
-```
-mpiexec -n 16  python ./siamese_tracking/tune_gene.py --arch SiamFCRes22 --resume ./snapshot/CIResNet22.pth --dataset xxxx --gpu_nums 4 2>&1 | tee logs/gene_tune_fc.log
-```
-
-
-:cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
 ## Citation
 If any part of our paper and code is helpful to your work, please generously cite with:
 
 ```
 @inproceedings{SiamDW_2019_CVPR,
-    author={Zhang, Zhipeng and Peng, Houwen},
+    author={Zhipeng, Zhang and Houwen, Peng},
     title={Deeper and Wider Siamese Networks for Real-Time Visual Tracking},
     booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
     year = {2019}

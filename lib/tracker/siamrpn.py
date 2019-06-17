@@ -9,6 +9,7 @@ import torch
 import numpy as np
 
 from torch.autograd import Variable
+import torch.nn.functional as F
 from utils.utils import load_yaml, get_subwindow_tracking, python2round, generate_anchor
 
 
@@ -43,6 +44,18 @@ class SiamRPN(object):
                 p.instance_size = 271
                 p.renew()
 
+        # param tune
+        if hp:
+            p.update(hp)
+            p.renew()
+
+            # for small object (from DaSiamRPN released)
+            if ((target_sz[0] * target_sz[1]) / float(state['im_h'] * state['im_w'])) < 0.004:
+                p.instance_size = hp['big_sz']
+                p.renew()
+            else:
+                p.instance_size = hp['small_sz']
+                p.renew()
 
 
         net = model
@@ -80,7 +93,10 @@ class SiamRPN(object):
 
         b, c, s, s = delta.size()
         delta = delta.permute(1, 2, 3, 0).contiguous().view(4, -1, s, s).data.cpu().numpy()  # [4,5,17,17]
-        score = torch.sigmoid(score).squeeze().cpu().data.numpy()  # [5,17,17]
+        if self.info.cls_type == 'thinner':
+            score = torch.sigmoid(score).squeeze().cpu().data.numpy()  # [5,17,17]
+        elif self.info.cls_type == 'thicker':
+            score = F.softmax(score.permute(1, 2, 3, 0).contiguous().view(2, -1, s, s), dim=0).squeeze().data[1, ...].cpu().numpy()  # [5,17,17]
 
         delta[0, ...] = delta[0, ...] * p.anchor[2, ...] + p.anchor[0, ...]
         delta[1, ...] = delta[1, ...] * p.anchor[3, ...] + p.anchor[1, ...]

@@ -24,6 +24,7 @@ parser.add_argument('--arch', dest='arch', default='SiamFCRes22', help='architec
 parser.add_argument('--resume', default='', type=str, required=True, help='resumed model')
 parser.add_argument('--gpu_nums', default=4, type=int, help='gpu numbers')
 parser.add_argument('--anchor_nums', default=5, type=int,  help='anchor numbers for rpn')
+parser.add_argument('--cls_type', default="thicker", type=str,  help='cls/loss type, thicker or thinner or else you defined')
 parser.add_argument('--dataset', default='VOT2015', type=str, help='dataset')
 
 args = parser.parse_args()
@@ -36,13 +37,14 @@ info = edict()
 info.arch = args.arch
 info.dataset = args.dataset
 info.epoch_test = False
+info.cls_type = args.cls_type
 
 # create model
 if 'SiamFC' in args.arch:
     model = models.__dict__[args.arch]()
     tracker = SiamFC(info)
 elif 'SiamRPN' in args.arch:
-    model = models.__dict__[args.arch](anchors_nums=args.anchor_nums)
+    model = models.__dict__[args.arch](anchors_nums=args.anchor_nums, cls_type=args.cls_type)
     tracker = SiamRPN(info)
 else:
     raise ValueError('not supported other model now')

@@ -1,5 +1,3 @@
-[TOC]
-
 # Train
 
 This is a generic framework for siamese tracking. Follow the instructions to embed your ideas to this code easily.

@@ -1,5 +1,3 @@
-[TOC]
-
 # Test
 
 ## Test on a specific video

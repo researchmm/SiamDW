@@ -50,7 +50,7 @@ Download model from [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal
 ```bash
 CUDA_VISIBLE_DEVICES=0 python ./siamese_tracking/test_siamfc.py --arch SiamFCRes22 --resume ./snapshot/CIResNet22.pth --dataset OTB2013
 or 
-CUDA_VISIBLE_DEVICES=0 python ./siamese_tracking/test_siamrpn.py --arch SiamRPNRes22 --resume ./snapshot/CIResNet22_RPN.pth --dataset VOT2017
+CUDA_VISIBLE_DEVICES=0 python ./siamese_tracking/test_siamrpn.py --arch SiamRPNRes22 --resume ./snapshot/CIResNet22_RPN.pth --dataset VOT2017 --cls_type thinner
 ```
 - BaiduDrive extracted code `uqvi`
 

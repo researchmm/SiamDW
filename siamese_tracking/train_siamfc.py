@@ -139,7 +139,7 @@ def main():
     # [*] gpus parallel and model prepare
     # prepare
     model = models.__dict__[config.SIAMFC.TRAIN.MODEL]()  # build model
-    model = load_pretrain(model, config.SIAMFC.TRAIN.PRETRAIN)  # load pretrain
+    model = load_pretrain(model, './pretrain/{}'.format(config.SIAMFC.TRAIN.PRETRAIN))  # load pretrain
     trainable_params = check_trainable(model, logger)           # print trainable params info
     optimizer = get_optimizer(config, trainable_params)         # optimizer
     lr_scheduler = lr_decay(config, optimizer)      # learning rate decay scheduler

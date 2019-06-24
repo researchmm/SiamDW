@@ -140,12 +140,13 @@ def main():
     info.arch = args.arch
     info.dataset = 'NOUSE'
     info.epoch_test = True
+    info.cls_type = 'thinner'
 
     if 'FC' in args.arch:
         net = models.__dict__[args.arch]()
         tracker = SiamFC(info)
     else:
-        net = models.__dict__[args.arch](anchors_nums=5)
+        net = models.__dict__[args.arch](anchors_nums=5, cls_type='thinner')
         tracker = SiamRPN(info)
 
     print('[*] ======= Track video with {} ======='.format(args.arch))

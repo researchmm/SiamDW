@@ -2,7 +2,7 @@
 we are hiring talented interns: houwen.peng@microsoft.com
 ## News
 - :sunny::sunny: The training and test code of SiamFC+ and SiamRPN+ have been released.
-- :sunny::sunny: Our [paper](https://arxiv.org/abs/1901.01660) have been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
+- :sunny::sunny: Our [paper](http://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.html) have been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
 
 

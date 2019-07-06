@@ -197,19 +197,19 @@ def track_tune(tracker, net, video, config):
         else:  # skip
             regions.append([float(0)])
 
-        if benchmark_name.startswith('VOT'):
-            return regions
-        elif benchmark_name.startswith('OTB'):
-            with open(result_path, "w") as fin:
-                for x in regions:
-                    p_bbox = x.copy()
-                    fin.write(
-                        ','.join(
-                            [str(i + 1) if idx == 0 or idx == 1 else str(i) for idx, i in enumerate(p_bbox)]) + '\n')
+    if benchmark_name.startswith('VOT'):
+        return regions
+    elif benchmark_name.startswith('OTB'):
+        with open(result_path, "w") as fin:
+            for x in regions:
+                p_bbox = x.copy()
+                fin.write(
+                    ','.join(
+                        [str(i + 1) if idx == 0 or idx == 1 else str(i) for idx, i in enumerate(p_bbox)]) + '\n')
 
-            return tracker_path
-        else:
-            raise ValueError('not supported')
+        return tracker_path
+    else:
+        raise ValueError('not supported')
 
 
 def auc_otb(tracker, net, config):

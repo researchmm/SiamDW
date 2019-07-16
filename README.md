@@ -30,7 +30,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 | CIResNet22-FC  | 0.663 | 0.644 | 0.318 | 0.303 | 0.234 |
 | CIResIncep22-FC| 0.662 | 0.642 | 0.310 | 0.295 | 0.236 |
 | CIResNext23-FC | 0.659 | 0.633 | 0.297 | 0.278 | 0.229 |
-| CIResNext22-RPN| 0.674 | 0.666 | 0.381 | 0.376 | 0.294 |
+| CIResNet22-RPN| 0.674 | 0.666 | 0.381 | 0.376 | 0.294 |
 
 #### Main results training with GOT-10k (SiamFC)
 | Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| 

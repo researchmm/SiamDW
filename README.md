@@ -36,7 +36,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 | Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| 
 | :------ | :------: | :------: | :------: | :------: | :------: |
 | CIResNet22-FC  | 0.664 | 0.654 | 0.361 | 0.335 | 0.266|  
-| CIResNet22W-FC | **0.689** | **0.664** | **0.368** | **0.352** | **0.269** |  
+| CIResNet22W-FC | **0.689** | **0.674** | **0.368** | **0.352** | **0.269** |  
 | CIResIncep22-FC| 0.673 | 0.650 | 0.332 | 0.305 | 0.251|  
 | CIResNext22-FC | 0.668 | 0.651 | 0.336 | 0.304 | 0.246|  
 

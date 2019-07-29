@@ -23,7 +23,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 
 ## Main Results
 #### Main results on VOT and OTB
-| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| 
+| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| GOT10K |
 | :------ | :------: | :------: | :------: | :------: | :------: |
 | Alex-FC      | 0.608 | 0.579 | 0.289 | 0.235 | 0.188 |
 | Alex-RPN     | -     | 0.637 | 0.349 | 0.344 | 0.244 |
@@ -33,16 +33,16 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 | CIResNet22-RPN| 0.674 | 0.666 | 0.381 | 0.376 | 0.294 |
 
 #### Main results training with GOT-10k (SiamFC)
-| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| 
-| :------ | :------: | :------: | :------: | :------: | :------: |
-| CIResNet22-FC  | 0.664 | 0.654 | 0.361 | 0.335 | 0.266|  
-| CIResNet22W-FC | **0.689** | **0.674** | **0.368** | **0.352** | **0.269** |  
-| CIResIncep22-FC| 0.673 | 0.650 | 0.332 | 0.305 | 0.251|  
-| CIResNext22-FC | 0.668 | 0.651 | 0.336 | 0.304 | 0.246|  
+| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| GOT10K |
+| :------ | :------: | :------: | :------: | :------: | :------: |:------: |
+| Alex-FC        |-      | -     | -     | -     |-     | 0.348 |
+| CIResNet22-FC  | 0.664 | 0.654 | 0.361 | 0.335 | 0.266| - |
+| CIResNet22W-FC | **0.689** | **0.674** | **0.368** | **0.352** | **0.269** | **0.416**  |
+| CIResIncep22-FC| 0.673 | 0.650 | 0.332 | 0.305 | 0.251| - | 
+| CIResNext22-FC | 0.668 | 0.651 | 0.336 | 0.304 | 0.246| - | 
 
 - Some reproduced results listed above are slightly better than the ones in the paper.
 - Recently we found that training on GOT10K dataset can achieve better performance for SiamFC. So we provide the results being trained on GOT10K.
-- CIResNet22W-FC is our recent work, which is not included in our paper.
 - Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing). 
 
 #### Note

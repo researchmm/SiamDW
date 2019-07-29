@@ -23,8 +23,8 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 
 ## Main Results
 #### Main results on VOT and OTB
-| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| GOT10K |
-| :------ | :------: | :------: | :------: | :------: | :------: |
+| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17|
+| :------ | :------: | :------: | :------: | :------: | :------: | 
 | Alex-FC      | 0.608 | 0.579 | 0.289 | 0.235 | 0.188 |
 | Alex-RPN     | -     | 0.637 | 0.349 | 0.344 | 0.244 |
 | CIResNet22-FC  | 0.663 | 0.644 | 0.318 | 0.303 | 0.234 |

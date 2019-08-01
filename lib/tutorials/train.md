@@ -8,7 +8,7 @@ This is a generic framework for siamese tracking. Follow the instructions to emb
 - Some data can only be downloaded from GoogleDrive since uploading size limitation of BaiduDrive.
 
 ## Pretrained model preparation
-Our code will download pretrained model from GoogleDrive automatically. If failed, please download from [OneDrive](https://mailccsf-my.sharepoint.com/:u:/g/personal/zhipeng_mail_ccsf_edu/EXLC8YnM9B9Kq5KcqfjbFg4B-OIwp6ZflvW_p0s0K3R1_Q?e=XNqj3n), [GoogleDrive](https://drive.google.com/open?id=1RIMB9542xXp60bZwndTvmIt2jogxAIX3) or [BaiduDrive](https://pan.baidu.com/s/17D-7Uf2SuqPb-6sKhmaABA), and put them to `pretrain` directory. (BAIDU extracted code: `cojg`)
+Our code will download pretrained model from GoogleDrive automatically. If failed, please download from [OneDrive](https://mailccsf-my.sharepoint.com/:u:/g/personal/zhipeng_mail_ccsf_edu/EXLC8YnM9B9Kq5KcqfjbFg4B-OIwp6ZflvW_p0s0K3R1_Q?e=XNqj3n), [GoogleDrive](https://drive.google.com/open?id=1RIMB9542xXp60bZwndTvmIt2jogxAIX3) or [BaiduDrive](https://pan.baidu.com/s/10VnODB7alKuLezt49Vfb3Q), and put them to `pretrain` directory.
 
 
 ## Conda preparation

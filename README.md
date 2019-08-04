@@ -44,6 +44,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 - Some reproduced results listed above are slightly better than the ones in the paper.
 - Recently we found that training on GOT10K dataset can achieve better performance for SiamFC. So we provide the results being trained on GOT10K.
 - Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing). 
+- Download VOT1819 and GOT10K raw results from [BaiduDrive](https://pan.baidu.com/s/1OV1g20s5rRKgZt9gJHzkUw) or [GoogleDrive](https://pan.baidu.com/s/1OV1g20s5rRKgZt9gJHzkUw).
 
 #### Note
 - You can download raw results from [GoogleDrive](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing), [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Ekjf2LfnGJ9NkYladR_Uk3IBnIQ3HlQybjzFRkwgeetGqg?e=DLlPJO) and [BaiduDrive](https://pan.baidu.com/s/1J1x58GaKtbMISDVv0ZuoCg) without running the code.

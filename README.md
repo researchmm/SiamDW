@@ -57,10 +57,6 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 :paperclip: [LaSOT](https://pan.baidu.com/s/10INTbmtfL-EdfkAmDQgcKw) 
 
 
-#### Note
-- You can download raw results from [GoogleDrive](https://drive.google.com/file/d/1rTC2XKJ2bznVjtXW-UAzeUGc7QizeLP9/view?usp=sharing), [OneDrive](https://mailccsf-my.sharepoint.com/:f:/g/personal/zhipeng_mail_ccsf_edu/Ekjf2LfnGJ9NkYladR_Uk3IBnIQ3HlQybjzFRkwgeetGqg?e=DLlPJO) and [BaiduDrive](https://pan.baidu.com/s/1J1x58GaKtbMISDVv0ZuoCg) without running the code.
-- Extracted code for Baidu Drive is `htyx`
-
 
 #### Environment
 The code is developed with Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz GPU: NVIDIA .GTX1080

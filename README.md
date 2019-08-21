@@ -32,31 +32,28 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 | CIResNext23-FC | 0.659 | 0.633 | 0.297 | 0.278 | 0.229 |
 | CIResNet22-RPN| 0.674 | 0.666 | 0.381 | 0.376 | 0.294 |
 
-#### Main results training with GOT-10k (SiamFC)
-| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17| VOT18| VOT19 | GOT10K | VISDRONE | LaSOT | 
-| :------ | :------: | :------: | :------: | :------: | :------: |:------: |:------: | :------: |  :------: | :------: |
-| Alex-FC        |-      | -     | -     | -     |-     | 0.188 |-| 0.348 | 0.359 | 0.336 |
-| CIResNet22-FC  | 0.664 | 0.654 | 0.361 | 0.335 | 0.266| - | - | - | - | - |
-| CIResNet22W-FC | **0.689** | **0.674** | **0.368** | **0.352** | **0.269** |**0.270** | **0.242** | **0.416**  | **0.383** | **0.387** |
-| CIResIncep22-FC| 0.673 | 0.650 | 0.332 | 0.305 | 0.251| - | -| - | - | - |
-| CIResNext22-FC | 0.668 | 0.651 | 0.336 | 0.304 | 0.246| - | -| - | - | - |
+#### Main results trained with GOT-10k (SiamFC)
+| Models  | OTB13 | OTB15 | VOT15 | VOT16 | VOT17|
+| :------ | :------: | :------: | :------: | :------: | :------: |
+| Alex-FC        |-      | -     | -     | -     |0.188     | 
+| CIResNet22-FC  | 0.664 | 0.654 | 0.361 | 0.335 | 0.266| 
+| CIResNet22W-FC | **0.689** | **0.674** | **0.368** | **0.352** | **0.269** |
+| CIResIncep22-FC| 0.673 | 0.650 | 0.332 | 0.305 | 0.251|
+| CIResNext22-FC | 0.668 | 0.651 | 0.336 | 0.304 | 0.246|
+| Raw Results | :paperclip: [OTB2013](https://pan.baidu.com/s/1HgkjUmnYl7qagIkz9u4r_A) | :paperclip: [OTB2015](https://pan.baidu.com/s/1ZgL4DQL57cuWfqxLFmUR1A)  | :paperclip: [VOT15](https://pan.baidu.com/s/1SGLcMWgrBuBT_kaXMdQBug)  | :paperclip: [VOT16](https://pan.baidu.com/s/12jmWEwo4tjbM4SHSKgULNw) |  :paperclip: [VOT17](https://pan.baidu.com/s/1UWQRE2VrJrONpj293el4Pw) |
 
 - Some reproduced results listed above are slightly better than the ones in the paper.
 - Recently we found that training on GOT10K dataset can achieve better performance for SiamFC. So we provide the results being trained on GOT10K.
 - Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing). 
-#### Download Results Files
-:paperclip: [OTB2013](https://pan.baidu.com/s/1HgkjUmnYl7qagIkz9u4r_A) 
-:paperclip: [OTB2015](https://pan.baidu.com/s/1ZgL4DQL57cuWfqxLFmUR1A) 
-:paperclip: [VOT2015](https://pan.baidu.com/s/1SGLcMWgrBuBT_kaXMdQBug) 
-:paperclip: [VOT2016](https://pan.baidu.com/s/12jmWEwo4tjbM4SHSKgULNw) 
-:paperclip: [VOT2017](https://pan.baidu.com/s/1UWQRE2VrJrONpj293el4Pw) 
-:paperclip: [VOT2018](https://pan.baidu.com/s/1hKg-n4PTPL_VCEdxCrXMAA) 
-:paperclip: [VOT2019](https://pan.baidu.com/s/1mwPrMJhi79_TO40RzTAwvQ) 
-:paperclip: [VISDRONE](https://pan.baidu.com/s/17MLGaHEFEFG3yWUmLqJ7ig) 
-:paperclip: [GOT10K](https://pan.baidu.com/s/10INTbmtfL-EdfkAmDQgcKw) 
-:paperclip: [LaSOT](https://pan.baidu.com/s/1SdQVcUsJG0TeGI77H92_UQ) 
 
 
+#### New added results
+| Benchmark | VOT18| VOT19 | GOT10K | VISDRONE19 | LaSOT | 
+|:------: |:------: | :------: |  :------: | :------: | :------: | 
+| Performance   | **0.270** | **0.242** | **0.416**  | **0.383** |**0.387**|
+| Raw Results | :paperclip: [VOT18](https://pan.baidu.com/s/1hKg-n4PTPL_VCEdxCrXMAA) | :paperclip: [VOT19](https://pan.baidu.com/s/1mwPrMJhi79_TO40RzTAwvQ) | :paperclip: [GOT10K](https://pan.baidu.com/s/10INTbmtfL-EdfkAmDQgcKw) |:paperclip: [VISDRONE](https://pan.baidu.com/s/17MLGaHEFEFG3yWUmLqJ7ig) | :paperclip: [LaSOT](https://pan.baidu.com/s/1SdQVcUsJG0TeGI77H92_UQ) |
+
+- We add resutls of SiamFCRes22W on recent benchmarks.  
 
 #### Environment
 The code is developed with Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz GPU: NVIDIA .GTX1080

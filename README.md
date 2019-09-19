@@ -74,12 +74,13 @@ See details in [train.md](lib/tutorials/train.md)
 If any part of our paper and code is helpful to your work, please generously cite with:
 
 ```
-@inproceedings{SiamDW_2019_CVPR,
-    author={Zhipeng, Zhang and Houwen, Peng},
-    title={Deeper and Wider Siamese Networks for Real-Time Visual Tracking},
-    booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-    year = {2019}
-}
+@InProceedings{Zhang_2019_CVPR,
+author = {Zhang, Zhipeng and Peng, Houwen},
+title = {Deeper and Wider Siamese Networks for Real-Time Visual Tracking},
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2019}
+} 
 ```
 
 ## License

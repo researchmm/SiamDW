@@ -1,7 +1,7 @@
 # Deeper and Wider Siamese Networks for Real-Time Visual Tracking
 we are hiring talented interns: houwen.peng@microsoft.com
 ## News
-- :sunny::sunny: We add the results on VOT-18, VOT-19, GOT10K, VISDRONE19, LaSOT datasets.
+- :sunny::sunny: We add the results on **VOT-18**, **VOT-19**, **GOT10K**, **VISDRONE19**, and **LaSOT** datasets.
 - :sunny::sunny: The training and test code of SiamFC+ and SiamRPN+ have been released.
 - :sunny::sunny: Our [paper](http://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.html) have been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
@@ -74,7 +74,7 @@ See details in [train.md](lib/tutorials/train.md)
 If any part of our paper and code is helpful to your work, please generously cite with:
 
 ```
-@InProceedings{Zhang_2019_CVPR,
+@InProceedings{SiamDW_2019_CVPR,
 author = {Zhang, Zhipeng and Peng, Houwen},
 title = {Deeper and Wider Siamese Networks for Real-Time Visual Tracking},
 booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},

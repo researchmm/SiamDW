@@ -2,8 +2,8 @@
 we are hiring talented interns: houwen.peng@microsoft.com
 ## News
 - :sunny::sunny: We add the results on **VOT-18**, **VOT-19**, **GOT10K**, **VISDRONE19**, and **LaSOT** datasets.
-- :sunny::sunny: The training and test code of SiamFC+ and SiamRPN+ have been released.
-- :sunny::sunny: Our [paper](http://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.html) have been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
+- :sunny::sunny: The training and testing code of SiamFC+ and SiamRPN+ have been released.
+- :sunny::sunny: Our [paper](http://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.html) has been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
 
 

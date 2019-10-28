@@ -1,6 +1,8 @@
 # Deeper and Wider Siamese Networks for Real-Time Visual Tracking
 we are hiring talented interns: houwen.peng@microsoft.com
 ## News
+- :trophy: **We are the Winner of VOT-19 RGB-D challenge**
+- :trophy: **We won the Runner-ups in VOT-19 Long-term and RGB-T challenges**
 - :sunny::sunny: We add the results on **VOT-18**, **VOT-19**, **GOT10K**, **VISDRONE19**, and **LaSOT** datasets.
 - :sunny::sunny: The training and testing code of SiamFC+ and SiamRPN+ have been released.
 - :sunny::sunny: Our [paper](http://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.html) has been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).

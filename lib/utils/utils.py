@@ -451,7 +451,7 @@ def _to_polygon(polys):
 
 
 def restore_from(model, optimizer, ckpt_path):
-    logger.info('restore from {}'.format(ckpt_path))
+    print('restore from {}'.format(ckpt_path))
     device = torch.cuda.current_device()
     ckpt = torch.load(ckpt_path, map_location = lambda storage, loc: storage.cuda(device))
     epoch = ckpt['epoch']

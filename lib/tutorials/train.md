@@ -62,6 +62,9 @@ Add your loss function in `lib/models/siamfc.py` or `lib/models/siamrpn.py`
 
 <br/>
 
+:hammer: **Tips**
+1. If you want to train Res16 or Res19, pls modify `self.features = ResNet(Bottleneck_CI, [3, 4], [True, False], [False, True])` in `backbone.py` to `self.features = ResNet(Bottleneck_CI, [3, 2], [True, False], [False, True])` for 16 or `self.features = ResNet(Bottleneck_CI, [3, 3], [True, False], [False, True])`  for 19.
+
 
 ===============================================================================
 Further discussion or questions about code please email `zhangzhipeng2017@ia.ac.cn`. <br/>

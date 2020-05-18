@@ -1,5 +1,6 @@
 # Deeper and Wider Siamese Networks for Real-Time Visual Tracking
-we are hiring talented interns: houwen.peng@microsoft.com
+We are hiring research interns for visual tracking and neural architecture search projects: houwen.peng@microsoft.com
+
 ## News
 - :trophy: **We are the Winner of [VOT-19 RGB-D](http://data.votchallenge.net/vot2019/vot2019_rgbt.pdf) challenge** [[codes and models]](https://github.com/researchmm/VOT2019)
 - :trophy: **We won the Runner-ups in VOT-19 Long-term and RGB-T challenges** [[codes and models]](https://github.com/researchmm/VOT2019)

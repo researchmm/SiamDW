@@ -48,7 +48,7 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 
 - Some reproduced results listed above are slightly better than the ones in the paper.
 - Recently we found that training on GOT10K dataset can achieve better performance for SiamFC. So we provide the results being trained on GOT10K.
-- Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing). 
+<!-- - Download pretrained on GOT10K [model](https://drive.google.com/file/d/1xvexXCUCB0gCYFnShj3NQ4Xuk52lLLtE/view?usp=sharing).  -->
 
 
 #### New added results
@@ -57,7 +57,9 @@ Siamese tracker is severely sensitive to hyper-parameter, which is a common sens
 | Performance   | **0.270** | **0.242** | **0.416**  | **0.383** |**0.387**|
 | Raw Results | :paperclip: [VOT18](https://pan.baidu.com/s/1hKg-n4PTPL_VCEdxCrXMAA) | :paperclip: [VOT19](https://pan.baidu.com/s/1mwPrMJhi79_TO40RzTAwvQ) | :paperclip: [GOT10K](https://pan.baidu.com/s/10INTbmtfL-EdfkAmDQgcKw) |:paperclip: [VISDRONE](https://pan.baidu.com/s/17MLGaHEFEFG3yWUmLqJ7ig) | :paperclip: [LaSOT](https://pan.baidu.com/s/1SdQVcUsJG0TeGI77H92_UQ) |
 
-- We add resutls of SiamFCRes22W on recent benchmarks.  
+- We add resutls of SiamFCRes22W on recent benchmarks.
+- Download pretrained on GOT10K [model](https://drive.google.com/file/d/1sfmy1nImNw_mstGLEOgpmJydQvSuaobI/view?usp=sharing) and [hyper-parameters](https://drive.google.com/file/d/1UAswI6Dd-TkbDa8oqRgSPPLUgiM9p--L/view?usp=sharing).
+
 
 #### Environment
 The code is developed with Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz GPU: NVIDIA .GTX1080

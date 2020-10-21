@@ -10,7 +10,8 @@ We are hiring research interns for visual tracking and neural architecture searc
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
 
 ## :+1: Recommendations 
-Our paper [Ocean](https://arxiv.org/pdf/2006.10721.pdf) is accepted by ECCV2020. Please use our new unified codebase [TracKit](https://github.com/researchmm/TracKit). 
+- **Note: Please use the new [code base](https://github.com/researchmm/TracKit). This one is no longer maintained.**
+- Our paper [Ocean](https://arxiv.org/pdf/2006.10721.pdf) is accepted by ECCV2020. Please use our new unified codebase [TracKit](https://github.com/researchmm/TracKit). 
 
 
 ## Introduction

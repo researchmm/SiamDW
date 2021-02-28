@@ -6,7 +6,7 @@ We are hiring research interns for visual tracking and neural architecture searc
 - :trophy: **We won the Runner-ups in VOT-19 Long-term and RGB-T challenges** [[codes and models]](https://github.com/researchmm/VOT2019)
 - :sunny::sunny: We add the results on **VOT-18**, **VOT-19**, **GOT10K**, **VISDRONE19**, and **LaSOT** datasets.
 - :sunny::sunny: The training and testing code of SiamFC+ and SiamRPN+ have been released.
-- :sunny::sunny: Our [paper](http://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.html) has been accepted by [CVPR2019](http://openaccess.thecvf.com/menu.py) (**Oral**).
+- :sunny::sunny: Our [paper](http://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.html) has been accepted by [CVPR2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf) (**Oral**).
 - :sunny::sunny: We provide a [parameter tuning toolkit](#TUNE-TOOLKIT) for siamese tracking framework.
 
 

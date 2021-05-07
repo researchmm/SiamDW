@@ -157,10 +157,6 @@ def track_images(tracker, model, images_path, init_box=None):
             lx, ly, w, h = cv2.selectROI(display_name, frame_disp, fromCenter=False)
             target_pos = np.array([lx + w / 2, ly + h / 2])
             target_sz = np.array([w, h])
-            print('frame_disp', frame_disp.shape)
-            print('target_pos', target_pos.shape)
-            print('target_sz', target_sz.shape)
-            print('model', type(model))
             state = tracker.init(frame_disp, target_pos, target_sz, model)  # init tracker
 
             break
@@ -197,7 +193,8 @@ def track_images(tracker, model, images_path, init_box=None):
         if key == ord('q'):
             break
         elif key == ord('r'):
-            ret, frame = cap.read()
+            path_idx += 1
+            frame = cv2.imread(im_paths[path_idx])
             frame_disp = frame.copy()
 
             cv2.putText(frame_disp, 'Select target ROI and press ENTER', (20, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL,

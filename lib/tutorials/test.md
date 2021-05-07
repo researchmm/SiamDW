@@ -11,6 +11,12 @@ python siamese_tracking/run_video.py --arch SiamRPNRes22 --resume snapshot/CIRes
 - The opencv version here is 4.1.0.25, and older versions may be not friendly to some functions.
 - If you try to conduct this project on a specific tracking task, eg. pedestrian tracking, it's suggested that you can tuning hyper-parameters on your collected data with our tuning toolkit detailed below. 
 
+## Test on images dir
+
+```python
+python siamese_tracking/run_video.py --arch SiamRPNRes22 --resume snapshot/CIResNet22_RPN.pth --images path/to/jpg/images
+```
+
 ## Test through webcam
 eg,
 ```

@@ -131,7 +131,7 @@ def track_images(tracker, model, images_path, init_box=None):
     cv2.namedWindow(display_name, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)
     cv2.resizeWindow(display_name, 960, 720)
     
-    im_paths = [(images_path + '/' + f) for f in os.listdir(images_path) if '.jpg' in f]:
+    im_paths = [(images_path + '/' + f) for f in os.listdir(images_path) if '.jpg' in f]
     if len(im_paths) == 0: 
         print("no jpg images found in dir")
         exit(-1)

@@ -5,7 +5,7 @@
 # Email: zhangzhipeng2017@ia.ac.cn
 # Detail: test siamese on a specific video (provide init bbox and video file)
 # ------------------------------------------------------------------------------
-
+import time
 import _init_paths
 import os
 import cv2
@@ -163,7 +163,7 @@ def track_images(tracker, model, images_path, init_box=None):
 
     path_idx = 0
     while path_idx < len(im_paths):
-
+        time.sleep(2)
         path_idx += 1
         frame = cv2.imread(im_paths[path_idx])
 

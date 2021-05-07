@@ -136,7 +136,7 @@ def track_images(tracker, model, images_path, init_box=None):
         exit(-1)
 
     frame = cv2.imread(im_paths[0])
-    cv2.imshow(im_paths[0].split('/')[-1], frame)
+    #cv2.imshow(im_paths[0].split('/')[-1], frame)
 
 
     # init

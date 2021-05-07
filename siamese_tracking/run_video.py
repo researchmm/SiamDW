@@ -46,7 +46,7 @@ def track_video(tracker, model, video_path, init_box=None):
     cv2.namedWindow(display_name, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)
     cv2.resizeWindow(display_name, 960, 720)
     success, frame = cap.read()
-    cv2.imshow(display_name, frame)
+    #cv2.imshow(display_name, frame)
 
     if success is not True:
         print("Read failed.")
@@ -160,6 +160,7 @@ def track_images(tracker, model, images_path, init_box=None):
             print('frame_disp', frame_disp.shape)
             print('target_pos', target_pos.shape)
             print('target_sz', target_sz.shape)
+            print('model', type(model))
             state = tracker.init(frame_disp, target_pos, target_sz, model)  # init tracker
 
             break

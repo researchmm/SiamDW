@@ -21,7 +21,7 @@ from tracker.siamfc import SiamFC
 from tracker.siamrpn import SiamRPN
 from easydict import EasyDict as edict
 from utils.utils import load_pretrain, cxy_wh_2_rect, get_axis_aligned_bbox, load_dataset, poly_iou
-
+from typing import NoneType
 
 def parse_args():
     """
@@ -30,7 +30,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description='PyTorch SiamFC Tracking Test')
     parser.add_argument('--arch', default='SiamRPNRes22', type=str, help='backbone architecture')
     parser.add_argument('--resume', default='/data/zpzhang/project4/siamese/Siamese/snapshot/CIResNet22RPN.model', type=str, help='pretrained model')
-    parser.add_argument('--video', default='/data/zpzhang/project4/siamese/Siamese/videos/bag.mp4', type=str, help='video file path')
+    parser.add_argument('--video', default=None, help='video file path')
+    parser.add_argument('--images', default=None, help='images directory')
     parser.add_argument('--init_bbox', default=None, help='bbox in the first frame None or [lx, ly, w, h]')
     args = parser.parse_args()
 
@@ -121,6 +122,95 @@ def track_video(tracker, model, video_path, init_box=None):
     cv2.destroyAllWindows()
 
 
+
+def track_images(tracker, model, images_path, init_box=None):
+
+    assert os.path.isdir(images_path), "please provide a valid folder name"
+
+    display_name = 'Video: {}'.format(images_path.split('/')[-1])
+    cv2.namedWindow(display_name, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)
+    cv2.resizeWindow(display_name, 960, 720)
+    
+    im_paths = [(images_path + '/' + f) for f in os.listdir(images_path) if '.jpg' in f]:
+    if len(im_paths) == 0: 
+        print("no jpg images found in dir")
+        exit(-1)
+
+    frame = cv2.imread(im_paths[0])
+    cv2.imshow(im_paths[0].split('/')[-1], frame)
+
+
+    # init
+    if init_box is not None:
+        lx, ly, w, h = init_box
+        target_pos = np.array([lx + w/2, ly + h/2])
+        target_sz = np.array([w, h])
+        state = tracker.init(frame, target_pos, target_sz, model)  # init tracker
+
+    else:
+        while True:
+
+            frame_disp = frame.copy()
+
+            cv2.putText(frame_disp, 'Select target ROI and press ENTER', (20, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                       1, (0, 0, 255), 1)
+
+            lx, ly, w, h = cv2.selectROI(display_name, frame_disp, fromCenter=False)
+            target_pos = np.array([lx + w / 2, ly + h / 2])
+            target_sz = np.array([w, h])
+            state = tracker.init(frame_disp, target_pos, target_sz, model)  # init tracker
+
+            break
+
+    path_idx = 0
+    while path_idx < len(im_paths):
+
+        path_idx += 1
+        frame = cv2.imread(im_paths[path_idx])
+
+        if frame is None:
+            return
+
+        frame_disp = frame.copy()
+
+        # Draw box
+        state = tracker.track(state, frame_disp)  # track
+        location = cxy_wh_2_rect(state['target_pos'], state['target_sz'])
+        x1, y1, x2, y2 = int(location[0]), int(location[1]), int(location[0] + location[2]), int(location[1] + location[3])
+
+        cv2.rectangle(frame_disp, (x1, y1), (x2, y2), (0, 255, 0), 5)
+
+        font_color = (0, 0, 0)
+        cv2.putText(frame_disp, 'Tracking!', (20, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1,
+                   font_color, 1)
+        cv2.putText(frame_disp, 'Press r to reset', (20, 55), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1,
+                   font_color, 1)
+        cv2.putText(frame_disp, 'Press q to quit', (20, 80), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1,
+                   font_color, 1)
+
+        # Display the resulting frame
+        cv2.imshow(display_name, frame_disp)
+        key = cv2.waitKey(1)
+        if key == ord('q'):
+            break
+        elif key == ord('r'):
+            ret, frame = cap.read()
+            frame_disp = frame.copy()
+
+            cv2.putText(frame_disp, 'Select target ROI and press ENTER', (20, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                       1.5,
+                       (0, 0, 0), 1)
+
+            cv2.imshow(display_name, frame_disp)
+            lx, ly, w, h = cv2.selectROI(display_name, frame_disp, fromCenter=False)
+            target_pos = np.array([lx + w / 2, ly + h / 2])
+            target_sz = np.array([w, h])
+            state = tracker.init(frame_disp, target_pos, target_sz, model)
+
+    # When everything done, release the capture
+    cv2.destroyAllWindows()
+
+
 def main():
     args = parse_args()
 
@@ -152,7 +242,12 @@ def main():
     else:
         pass
 
-    track_video(tracker, net, args.video, init_box=args.init_bbox)
+    if args.video is not None:
+        track_video(tracker, net, args.video, init_box=args.init_bbox)
+    elif  args.images is not None:
+        track_images(tracker, net, args.images, init_box=args.init_bbox)
+    else:
+        print('Please give path to image dir or video file')
 
 if __name__ == '__main__':
     main()

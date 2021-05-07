@@ -36,18 +36,14 @@ class SiamRPN(object):
             p.renew()
 
         # for vot17 or vot18: from siamrpn released
-        print("=====================================")
-        print("=====================================")
-        print(self.info.dataset)
-        print("=====================================")
-        print("=====================================")
-        if '2017' in self.info.dataset:
-            if ((target_sz[0] * target_sz[1]) / float(state['im_h'] * state['im_w'])) < 0.004:
-                p.instance_size = 287
-                p.renew()
-            else:
-                p.instance_size = 271
-                p.renew()
+        if self.info.dataset:
+            if '2017' in self.info.dataset:
+                if ((target_sz[0] * target_sz[1]) / float(state['im_h'] * state['im_w'])) < 0.004:
+                    p.instance_size = 287
+                    p.renew()
+                else:
+                    p.instance_size = 271
+                    p.renew()
 
         # param tune
         if hp:

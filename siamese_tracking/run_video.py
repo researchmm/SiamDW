@@ -157,6 +157,9 @@ def track_images(tracker, model, images_path, init_box=None):
             lx, ly, w, h = cv2.selectROI(display_name, frame_disp, fromCenter=False)
             target_pos = np.array([lx + w / 2, ly + h / 2])
             target_sz = np.array([w, h])
+            print('frame_disp', frame_disp.shape)
+            print('target_pos', target_pos.shape)
+            print('target_sz', target_sz.shape)
             state = tracker.init(frame_disp, target_pos, target_sz, model)  # init tracker
 
             break
